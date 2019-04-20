@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 18:52:48 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/20 20:15:47 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/20 20:44:52 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ int	executioner(int	(*test)(void))
 	pid_t	pid;
 	int		status;
 
-	(void)test;
+//	if (test == NULL)
+//		return (ko);
 	pid = fork();
+	if (pid < 0)
+		ft_error();
 	if (pid == 0)
 		exit (test());
 	else
@@ -31,8 +34,8 @@ int	executioner(int	(*test)(void))
 		{
 			return (segv);
 		}
+		return (ko);
 	}
-	return (1);
 }
 
 // int	crash(void)
