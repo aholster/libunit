@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/20 20:57:17 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/20 21:47:56 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef	struct		s_unit
 	struct s_unit	*next;
 }					t_unit;
 
-enum funcres {ok = 1, ko = 0, segv = -1, buse = -2};
+enum				e_funcres {ok = 1, ko = 0, segv = -1, buse = -2};
 
 void				ft_error(void);
 void				init_test(t_unit **lst, char *name, int (*f)(void));

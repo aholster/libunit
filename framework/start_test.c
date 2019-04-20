@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/20 21:00:38 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/20 21:49:06 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	putresult(int code)
 		ft_error();
 }
 
-int		start_test(t_unit **lst, char *test)
+int			start_test(t_unit **lst, char *test)
 {
 	t_unit			*cur;
 	int				neg;
@@ -61,14 +61,14 @@ int		start_test(t_unit **lst, char *test)
 	return (neg);
 }
 
-int main(void)
-{
-	t_unit	*lst;
+// int 			main(void)
+// {
+// 	t_unit	*lst;
 
-	lst = NULL;
-	init_test(&lst, "test1", NULL);
-	init_test(&lst, "test2", NULL);
-	init_test(&lst, "test3", NULL);
-	start_test(&lst, "STRLEN");
-	return (0);
-}
+// 	lst = NULL;
+// 	init_test(&lst, "test1", NULL);
+// 	init_test(&lst, "test2", NULL);
+// 	init_test(&lst, "test3", NULL);
+// 	start_test(&lst, "STRLEN");
+// 	return (0);
+// }
