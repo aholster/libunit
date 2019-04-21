@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   00_launcher.c                                      :+:    :+:            */
+/*   atoi_test03.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: aholster <aholster@student.codam.nl>         +#+                     */
+/*   By: dsaripap <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/20 17:19:06 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/20 17:42:54 by aholster      ########   odam.nl         */
+/*   Created: 2019/04/21 20:54:58 by dsaripap      #+#    #+#                 */
+/*   Updated: 2019/04/21 21:18:02 by dsaripap      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	strlen_launcher(void)
+#include "../header.h"
+
+int	atoi_minus_test(void)
 {
-	
+	if (ft_atoi("    -9332") == atoi("    -9332"))
+		return (0);
+	else
+		return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 18:52:48 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/20 21:54:22 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/21 20:53:04 by dsaripap      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int	executioner(int (*test)(void))
 			return (WEXITSTATUS(status) == 0 ? ok : ko);
 		if (WIFSIGNALED(status) != FALSE)
 		{
-			return (segv);
-			//add advanced signal handling for segv and buse
+			if (WTERMSIG(status) == 10)
+				return (buse);
+			else if (WTERMSIG(status) == 11)
+				return (segv);
 		}
 		return (ko);
 	}

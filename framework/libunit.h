@@ -33,6 +33,7 @@ enum				e_funcres {ok = 1, ko = 0, segv = -1, buse = -2};
 void				ft_error(void);
 void				init_test(t_unit **lst, char *name, int (*f)(void));
 int					executioner(int	(*test)(void));
+int					start_test(t_unit **lst, char *test);
 
 void				lu_putstr(char const *s);
 void				lu_putendl(char const *s);
