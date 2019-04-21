@@ -6,7 +6,7 @@
 /*   By: dsaripap <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/21 20:42:52 by dsaripap      #+#    #+#                 */
-/*   Updated: 2019/04/21 21:13:33 by dsaripap      ########   odam.nl         */
+/*   Updated: 2019/04/21 23:34:27 by dsaripap      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	w_isdigit_test(void)
 {
-	if (ft_isdigit('w') == 0)
+	if (ft_isdigit(':') == 0)
 		return (0);
 	else
 		return (-1);

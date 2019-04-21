@@ -6,13 +6,13 @@
 /*   By: dsaripap <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/31 18:54:31 by dsaripap      #+#    #+#                 */
-/*   Updated: 2019/04/21 20:50:34 by dsaripap      ########   odam.nl         */
+/*   Updated: 2019/04/21 23:32:51 by dsaripap      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57)
+	if (c >= 48 && c <= 58)
 		return (1);
 	else
 		return (0);
