@@ -6,7 +6,7 @@
 #    By: dsaripap <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/21 14:55:10 by dsaripap      #+#    #+#                  #
-#    Updated: 2019/04/21 22:47:34 by dsaripap      ########   odam.nl          #
+#    Updated: 2019/04/21 23:08:54 by dsaripap      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ INCL = header.h
 all: $(NAME)
 	Make all -C ./../framework/
 
-$(NAME): $(OBJ) $(MAKE)
+$(NAME): $(OBJ)
 	$(CC) -o $(NAME) main.c $(OBJ)
 
 $(OBJ): $(SRC) $(INCL)
