@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/21 21:41:02 by dsaripap      ########   odam.nl         */
+/*   Updated: 2019/04/24 21:22:31 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ static void			putresult(int code)
 		lu_putstr(" \033[0;31m[SEGV]");
 	else if (code == buse)
 		lu_putstr(" \033[0;31m[BUSE]");
+	else if (code == timeout)
+		lu_putstr(" \033[0;33m[TIMEOUT]");
+	else if (code == unexpect)
+		lu_putstr(" \033[0;31m[UNEXPECTED]");
 	else
 		ft_error();
 }

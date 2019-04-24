@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/21 16:26:05 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/04/24 13:32:24 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/24 21:08:55 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ int		aristotle_strlen_test(void);
 int		strlen_test03(void);
 int		strlen_launcher(void);
 
+int		infiniteloop(void);
 #endif

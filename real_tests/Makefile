@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/22 14:50:59 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/24 13:33:13 by aholster      ########   odam.nl          #
+#    Updated: 2019/04/24 21:08:26 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ TESTS03 = strcmp_test01 strcmp_test02 strcmp_test03 strcmp_launcher
 
 04LOC = ./ft_strlen/
 
-TESTS04 = strlen_test01 strlen_test02 strlen_test03 strlen_launcher
+TESTS04 = strlen_test01 strlen_test02 strlen_test03 strlen_launcher \
+			strlen_test04 
 
 SOURCE := $(TESTS00:%=$(00LOC)%) $(TESTS01:%=$(01LOC)%) \
 			$(TESTS02:%=$(02LOC)%) $(TESTS03:%=$(03LOC)%) \

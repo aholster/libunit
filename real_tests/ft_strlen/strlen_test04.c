@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_error.c                                         :+:    :+:            */
+/*   strlen_test04.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/20 17:47:11 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/24 21:13:07 by aholster      ########   odam.nl         */
+/*   Created: 2019/04/24 21:06:27 by aholster       #+#    #+#                */
+/*   Updated: 2019/04/24 21:13:25 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libunit.h"
+#include "header.h"
 
-void	ft_error(void)
+int	infiniteloop(void)
 {
-	write(1, "error\n", 6);
-	exit(-1);
+	while (1)
+	{
+		
+	}
+	if (200)
+		return (0);
+	else
+		return (-1);
 }
