@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   strcmp_test03.c                                    :+:    :+:            */
+/*   strcmp_test01.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dsaripap <marvin@codam.nl>                   +#+                     */
+/*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/21 20:40:20 by dsaripap      #+#    #+#                 */
-/*   Updated: 2019/04/21 21:12:12 by dsaripap      ########   odam.nl         */
+/*   Created: 2019/04/21 20:44:06 by dsaripap       #+#    #+#                */
+/*   Updated: 2019/04/24 13:41:25 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "header.h"
 
-int	empty_strcmp_test(void)
+int	diff_strcmp_test(void)
 {
-	if (ft_strcmp("", "") == strcmp("", ""))
+	if (ft_strcmp("Hello", "Hi") == strcmp("Hello", "Hi"))
 		return (0);
 	else
 		return (-1);

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   isdigit_test02.c                                   :+:    :+:            */
+/*   isalpha_test02.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dsaripap <marvin@codam.nl>                   +#+                     */
+/*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/21 20:42:52 by dsaripap      #+#    #+#                 */
-/*   Updated: 2019/04/21 23:34:27 by dsaripap      ########   odam.nl         */
+/*   Created: 2019/04/21 20:46:05 by dsaripap       #+#    #+#                */
+/*   Updated: 2019/04/24 13:41:25 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "header.h"
 
-int	w_isdigit_test(void)
+int	one_isalpha_test(void)
 {
-	if (ft_isdigit(':') == 0)
+	if (ft_isalpha('1') == 0)
 		return (0);
 	else
 		return (-1);

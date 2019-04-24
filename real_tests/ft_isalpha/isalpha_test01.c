@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   atoi_test03.c                                      :+:    :+:            */
+/*   isalpha_test01.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dsaripap <marvin@codam.nl>                   +#+                     */
+/*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/21 20:54:58 by dsaripap      #+#    #+#                 */
-/*   Updated: 2019/04/21 21:18:02 by dsaripap      ########   odam.nl         */
+/*   Created: 2019/04/21 20:45:56 by dsaripap       #+#    #+#                */
+/*   Updated: 2019/04/24 13:41:25 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "header.h"
 
-int	atoi_minus_test(void)
+int	d_isalpha_test(void)
 {
-	if (ft_atoi("    -9332") == atoi("    -9332"))
+	if (ft_isalpha('d') == 1)
 		return (0);
 	else
 		return (-1);

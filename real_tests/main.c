@@ -6,12 +6,11 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 21:49:40 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/21 21:03:37 by dsaripap      ########   odam.nl         */
+/*   Updated: 2019/04/24 13:40:41 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-// #include "ft_atoi/00_atoi_launcher.c"
 
 int	main(void)
 {

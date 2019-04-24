@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   strcmp_test01.c                                    :+:    :+:            */
+/*   isdigit_test03.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dsaripap <marvin@codam.nl>                   +#+                     */
+/*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/21 20:44:06 by dsaripap      #+#    #+#                 */
-/*   Updated: 2019/04/21 21:11:52 by dsaripap      ########   odam.nl         */
+/*   Created: 2019/04/21 20:43:03 by dsaripap       #+#    #+#                */
+/*   Updated: 2019/04/24 13:41:25 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "header.h"
 
-int	diff_strcmp_test(void)
+int	four_isdigit_test(void)
 {
-	if (ft_strcmp("Hello", "Hi") == strcmp("Hello", "Hi"))
+	if (ft_isdigit('4') == 1)
 		return (0);
 	else
 		return (-1);

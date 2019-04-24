@@ -3,72 +3,98 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: dsaripap <marvin@codam.nl>                   +#+                      #
+#    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2019/04/21 14:55:10 by dsaripap      #+#    #+#                  #
-#    Updated: 2019/04/21 23:08:54 by dsaripap      ########   odam.nl          #
+#    Created: 2019/04/22 14:50:59 by aholster       #+#    #+#                 #
+#    Updated: 2019/04/24 13:33:13 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
+DATE := $(shell date)
+
+SOURCEPATH := ./
+
+SOURCEFILES := ft_atoi ft_isalpha ft_isdigit ft_strcmp ft_strlen
+
+00LOC = ./ft_atoi/
+
+TESTS00 = atoi_test01 atoi_test02 atoi_test03 atoi_launcher
+
+01LOC = ./ft_isalpha/
+
+TESTS01 = isalpha_test01 isalpha_test02 isalpha_test03 isalpha_launcher
+
+02LOC = ./ft_isdigit/
+
+TESTS02 = isdigit_test01 isdigit_test02 isdigit_test03 isdigit_launcher
+
+03LOC = ./ft_strcmp/
+
+TESTS03 = strcmp_test01 strcmp_test02 strcmp_test03 strcmp_launcher
+
+04LOC = ./ft_strlen/
+
+TESTS04 = strlen_test01 strlen_test02 strlen_test03 strlen_launcher
+
+SOURCE := $(TESTS00:%=$(00LOC)%) $(TESTS01:%=$(01LOC)%) \
+			$(TESTS02:%=$(02LOC)%) $(TESTS03:%=$(03LOC)%) \
+			$(TESTS04:%=$(04LOC)%) $(SOURCEFILES:%=$(SOURCEPATH)%) \
+			main
+
+FRAMEPATH := ./../framework/
+
+FILEC = $(SOURCE:%=%.c)
+
+HEAD = header.h
+
 NAME = test
-CC = gcc -Wall -Wextra -Werror
-SRC = ft_atoi/atoi_test01.c ft_atoi/atoi_test02.c ft_atoi/atoi_test03.c \
-	  ft_atoi/ft_atoi.c ft_atoi/atoi_launcher.c \
-	  ../framework/init_test.c ../framework/ft_error.c \
-	  ../framework/start_test.c \
-	  ../framework/executioner.c ../framework/lu_lstdel.c \
-	  ../framework/lu_putendl.c ../framework/lu_putnbr.c \
-	  ../framework/lu_lstaddend.c \
-	  ../framework/lu_putstr.c ../framework/lu_strlen.c \
-	  ft_isalpha/isalpha_test01.c ft_isalpha/isalpha_test02.c \
-	  ft_isalpha/isalpha_test03.c ft_isalpha/isalpha_launcher.c \
-	  ft_isalpha/ft_isalpha.c \
-	  ft_isdigit/isdigit_test01.c ft_isdigit/isdigit_test02.c \
-	  ft_isdigit/isdigit_test03.c ft_isdigit/ft_isdigit.c \
-	  ft_isdigit/isdigit_launcher.c \
-	  ft_strcmp/strcmp_test01.c ft_strcmp/strcmp_test02.c \
-	  ft_strcmp/strcmp_test03.c ft_strcmp/ft_strcmp.c \
-	  ft_strcmp/strcmp_launcher.c \
-	  ft_strlen/strlen_test01.c ft_strlen/strlen_test02.c \
-	  ft_strlen/strlen_test03.c ft_strlen/ft_strlen.c \
-	  ft_strlen/strlen_launcher.c \
 
-OBJ = atoi_test01.o atoi_test02.o atoi_test03.o \
-	  ft_atoi.o atoi_launcher.o \
-	  init_test.o ft_error.o lu_lstaddend.o \
-	  start_test.o executioner.o lu_lstdel.o \
-	  lu_putendl.o lu_putnbr.o lu_putstr.o lu_strlen.o \
-	  isalpha_test01.o isalpha_test02.o isalpha_test03.o \
-	  isalpha_launcher.o ft_isalpha.o \
-	  isdigit_test01.o isdigit_test02.o isdigit_test03.o \
-	  isdigit_launcher.o ft_isdigit.o \
-	  strcmp_test01.o strcmp_test02.o strcmp_test03.o \
-	  ft_strcmp.o strcmp_launcher.o \
-	  strlen_test01.o strlen_test02.o strlen_test03.o \
-	  ft_strlen.o strlen_launcher.o \
+NORM = norminette $(FILEC) $(HEAD) | grep -e "Error"  -e "Warning" -B 1
 
-INCL = header.h
+CC = gcc -Wall -Werror -Wextra
 
 all: $(NAME)
-	Make all -C ./../framework/
 
-$(NAME): $(OBJ)
-	$(CC) -o $(NAME) main.c $(OBJ)
-
-$(OBJ): $(SRC) $(INCL)
-	$(CC) -c $(SRC)
-
-.PHONY: clean
+$(NAME):
+	@make all -C $(FRAMEPATH)
+	@echo "\033[0;33mStarting assembly of $(NAME)…\033[0;00m"
+	@$(CC) $(FILEC) -o $(NAME) -I $(FRAMEPATH) -L $(FRAMEPATH) -lunit \
+	-I $(SOURCEPATH)
+	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m\n"
+	@./$(NAME)
 
 clean:
-	rm -f $(OBJ)
-	Make clean -C ./../framework/
+	@make clean -C $(FRAMEPATH)
+	@echo "\033[0;33mInitializing Summary Deletions...\033[0;00m"
+	@find "./" -type f \( -name '*~' -o -name '\#*\#' -o -name '.DS_Store' \)\
+	 -exec rm -rfv {} \;
+	@echo "\033[0;31m	Executed!\033[0;00m\n"
 
 fclean: clean
-	rm -f $(NAME)
-	Make fclean -C ./../framework/
+	@make fclean -C $(FRAMEPATH)
+	@rm -rf $(NAME)
+	@echo "\033[0;31mObituary of $(NAME): Deceased on $(shell date).\
+	\033[0;00m\n"
 
 re: fclean all
+	@make re -C $(FRAMEPATH)
 
 norm:
-	norminette $(SRC) $(INCL) | grep -e "Error" -e "Warning" -B 1
+	@echo "**+++=====*=====*=====*=====*{\033[0;31mOUT\033[0;00m}\
+	*=====*=====*=====*=====+++**\033[0;33m"
+	@$(NORM) || TRUE 
+	@echo "\033[0;00m**+++=====*=====*=====*=====*\
+=====*=====*===*=====*=====+++**"
+
+add:
+	@git add $(FILEC) $(HEAD) Makefile
+	git status
+
+push: norm
+ifdef MSG
+	@git commit -m "$(MSG)"
+	git push
+else
+	@git commit
+	git push
+endif

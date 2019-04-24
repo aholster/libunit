@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   atoi_launcher.c                                    :+:    :+:            */
+/*   strlen_launcher.c                                  :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dsaripap <marvin@codam.nl>                   +#+                     */
+/*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/21 20:54:12 by dsaripap      #+#    #+#                 */
-/*   Updated: 2019/04/21 20:54:15 by dsaripap      ########   odam.nl         */
+/*   Created: 2019/04/21 20:36:30 by dsaripap       #+#    #+#                */
+/*   Updated: 2019/04/24 13:41:30 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "header.h"
 
-int	atoi_launcher(void)
+int	strlen_launcher(void)
 {
 	t_unit	*lst;
 
 	lu_putstr("\033[0;32m");
 	lst = NULL;
-	init_test(&lst, "positive_test", atoi_positive_test);
-	init_test(&lst, "doublesign_test", atoi_doublesign_test);
-	init_test(&lst, "minus_test", atoi_minus_test);
-	start_test(&lst, "ATOI");
+	init_test(&lst, "barcelona_strlen_test", barcelona_strlen_test);
+	init_test(&lst, "aristotle_strlen_test", aristotle_strlen_test);
+	init_test(&lst, "strlen_test03", strlen_test03);
+	start_test(&lst, "STR_LEN");
 	return (0);
 }

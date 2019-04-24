@@ -3,14 +3,14 @@
 /*                                                        ::::::::            */
 /*   strlen_test03.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dsaripap <marvin@codam.nl>                   +#+                     */
+/*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/21 21:04:41 by dsaripap      #+#    #+#                 */
-/*   Updated: 2019/04/21 21:05:57 by dsaripap      ########   odam.nl         */
+/*   Created: 2019/04/21 21:04:41 by dsaripap       #+#    #+#                */
+/*   Updated: 2019/04/24 13:41:25 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "header.h"
 
 int	strlen_test03(void)
 {

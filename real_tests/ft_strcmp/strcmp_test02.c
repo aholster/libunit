@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   strlen_test02.c                                    :+:    :+:            */
+/*   strcmp_test02.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: dsaripap <marvin@codam.nl>                   +#+                     */
+/*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/21 20:35:46 by dsaripap      #+#    #+#                 */
-/*   Updated: 2019/04/21 23:29:30 by dsaripap      ########   odam.nl         */
+/*   Created: 2019/04/21 20:44:15 by dsaripap       #+#    #+#                */
+/*   Updated: 2019/04/24 13:41:25 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "header.h"
 
-int	aristotle_strlen_test(void)
+int	same_strcmp_test(void)
 {
-	char *p;
-	p = NULL;
-	if (ft_strlen(p) == strlen(p))
+	if (ft_strcmp("Amsterdam", "Amsterdam") == strcmp("Amsterdam", "Amsterdam"))
 		return (0);
 	else
 		return (-1);

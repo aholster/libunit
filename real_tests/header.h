@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/21 16:26:05 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/04/24 13:23:09 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/24 13:32:24 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include "libunit.h"
 # include "libft.h"
 
-int		atoi_positive_test();
-int		atoi_doublesign_test();
-int		atoi_minus_test();
+int		atoi_positive_test(void);
+int		atoi_doublesign_test(void);
+int		atoi_minus_test(void);
 int		atoi_launcher(void);
 
 int		d_isalpha_test();
