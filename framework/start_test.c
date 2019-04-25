@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 14:32:01 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 14:42:22 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void			putresult(int code, enum e_retcode expected)
 		else if (code == unexpect)
 			lu_putstr("\033[0;31m[UNEXPECTED]");
 		else
-			ft_error();
+			ft_error("unknown return code");
 		lu_putendl("\033[0;00m");
 	}
 }

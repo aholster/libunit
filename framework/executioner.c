@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 18:52:48 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 14:30:43 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 14:40:57 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ enum e_retcode			executioner(int (*test)(void))
 
 	timer_pid = fork();
 	if (timer_pid < 0)
-		ft_error();
+		ft_error("fork failure");
 	if (timer_pid == 0)
 		dreamer();
 	test_pid = fork();
 	if (test_pid < 0)
-		ft_error();
+		ft_error("fork failure");
 	if (test_pid == 0)
 		exit(test());
 	else
