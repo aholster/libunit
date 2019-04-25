@@ -6,14 +6,15 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/25 16:34:55 by aholster      ########   odam.nl          #
+#    Updated: 2019/04/25 18:12:23 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 DATE := $(shell date)
 
 SOURCE := ft_error executioner init_test init_advtest lu_lstaddend lu_lstdel\
-	lu_putendl lu_putstr lu_putnbr lu_strlen start_test lu_putstrstr putresult
+	lu_putendl lu_putstr lu_putnbr lu_strlen start_test lu_putstrstr putresult\
+	loadlaunch activate_launcher
 
 FILEC = $(SOURCE:%=./%.c)
 

@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 16:28:44 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 18:23:14 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void				init_advtest(t_unit **lst, char *name, \
 					enum e_retcode expected_result, int (*f)(void));
 enum e_retcode		executioner(int	(*test)(void));
 int					start_test(t_unit **lst, char *test);
+
+void				loadlaunch(t_unit **alst, int (*f)(void));
+void				activate_launcher(t_unit **alst, int argc, char **argv);
 
 void				lu_putstr(char const *s);
 void				lu_putendl(char const *s);

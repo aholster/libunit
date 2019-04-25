@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   loadlaunch.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/20 21:49:40 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 18:15:32 by aholster      ########   odam.nl         */
+/*   Created: 2019/04/25 18:03:30 by aholster       #+#    #+#                */
+/*   Updated: 2019/04/25 18:24:00 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libunit.h"
 
-int	main(int argc, char **argv)
+void	loadlaunch(t_unit **alst, int (*f)(void))
 {
-	t_unit	*lst;
-	
-	loadlaunch(&lst, atoi_launcher);
-	loadlaunch(&lst, isalpha_launcher);
-	loadlaunch(&lst, isdigit_launcher);
-	loadlaunch(&lst, strcmp_launcher);
-	loadlaunch(&lst, strlen_launcher);
-	activate_launcher(&lst, argc, argv);
-	return (0);
+	t_unit	*cur;
+
+	cur = (t_unit *)malloc(sizeof(t_unit));
+	if (cur == NULL)
+		ft_error("malloc failure");
+	cur->test = f;
+	cur->name = NULL;
+	cur->expectation = -4;
+	cur->next = NULL;
+	lu_lstaddend(alst, cur);
 }
