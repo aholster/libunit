@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 18:52:48 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/24 22:37:39 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 14:16:46 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,32 @@ static int	retcode(int status)
 	return (unexpect);
 }
 
+static int	resolver(pid_t timer_pid, pid_t test_pid)
+{
+	pid_t	first;
+	int		status;
+	int		ret;
+
+	ret = unexpect;
+	first = waitpid(WAIT_ANY , &status, 0);
+	if (first == test_pid)
+	{
+		kill(timer_pid, SIGKILL);
+		ret = retcode(status);
+	}
+	else if (first == timer_pid)
+	{
+		kill(test_pid, SIGKILL);
+		ret = timeout;
+	}
+	first = waitpid(WAIT_ANY, &status, 0);
+	return (ret);
+}
+
 int			executioner(int (*test)(void))
 {
 	pid_t	timer_pid;
 	pid_t	test_pid;
-	pid_t	first;
-	int		status;
-	int		ret;
 
 	timer_pid = fork();
 	if (timer_pid < 0)
@@ -55,19 +74,6 @@ int			executioner(int (*test)(void))
 		exit(test());
 	else
 	{
-		ret = unexpect;
-		first = waitpid(WAIT_ANY , &status, 0);
-		if (first == test_pid)
-		{
-			kill(timer_pid, SIGKILL);
-			ret = retcode(status);
-		}
-		else if (first == timer_pid)
-		{
-			kill(test_pid, SIGKILL);
-			ret = timeout;
-		}
-		first = waitpid(WAIT_ANY, &status, 0);
-		return (ret);
+		return (resolver(timer_pid, test_pid));
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/24 22:21:10 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 14:04:00 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ size_t				lu_strlen(char const *s);
 void				lu_lstdel(t_unit **alst);
 t_unit				*lu_lstaddend(t_unit **lst, t_unit *new);
 void				lu_putnbr(int n);
+void				lu_putstrstr(char *format, char *str);
 
 #endif

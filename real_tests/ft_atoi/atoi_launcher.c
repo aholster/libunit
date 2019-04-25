@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/21 20:54:12 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/04/24 13:41:25 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 14:19:01 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	atoi_launcher(void)
 {
 	t_unit	*lst;
 
-	lu_putstr("\033[0;32m");
 	lst = NULL;
 	init_test(&lst, "positive_test", atoi_positive_test);
 	init_test(&lst, "doublesign_test", atoi_doublesign_test);

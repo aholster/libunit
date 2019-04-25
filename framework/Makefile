@@ -6,14 +6,14 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/20 21:58:55 by aholster      ########   odam.nl          #
+#    Updated: 2019/04/25 14:08:16 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 DATE := $(shell date)
 
 SOURCE := ft_error executioner init_test lu_lstaddend lu_lstdel lu_putendl\
-		lu_putstr lu_putnbr lu_strlen start_test
+		lu_putstr lu_putnbr lu_strlen start_test lu_putstrstr
 
 FILEC = $(SOURCE:%=./%.c)
 

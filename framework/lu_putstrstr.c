@@ -1,25 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   strcmp_launcher.c                                  :+:    :+:            */
+/*   lu_putstrstr.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/21 20:38:00 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/04/25 14:19:06 by aholster      ########   odam.nl         */
+/*   Created: 2019/04/25 13:59:40 by aholster       #+#    #+#                */
+/*   Updated: 2019/04/25 14:08:24 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libunit.h"
 
-int	strcmp_launcher(void)
+size_t	subfinder(char *format)
 {
-	t_unit	*lst;
+	size_t	index;
 
-	lst = NULL;
-	init_test(&lst, "diff_strcmp_test", diff_strcmp_test);
-	init_test(&lst, "same_strcmp_test", same_strcmp_test);
-	init_test(&lst, "empty_strcmp_test", empty_strcmp_test);
-	start_test(&lst, "STR_CMP");
-	return (0);
+	index = 0;
+	while (format[index] != '\0' && format[index] != '%')
+	{
+		index++;
+	}
+	return (index);
+}
+
+void	lu_putstrstr(char *format, char *str)
+{
+	size_t	index;
+
+	index = subfinder(format);
+	if (format[index] == '%')
+	{
+		write(1, format, index);
+		lu_putstr(str);
+		lu_putstr(&format[index + 1]);
+	}
+	else
+	{
+		lu_putstr(format);
+	}
 }

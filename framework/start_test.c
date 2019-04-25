@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/24 22:14:42 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 14:12:49 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static void			putresult(int code)
 {
 	if (code == ok)
-		lu_putstr(" \033[0;32m[OK]");
+		lu_putstr("\033[0;32m[OK]");
 	else if (code == ko)
-		lu_putstr(" \033[0;31m[KO]");
+		lu_putstr("\033[0;31m[KO]");
 	else if (code == segv)
-		lu_putstr(" \033[0;31m[SEGV]");
+		lu_putstr("\033[0;31m[SEGV]");
 	else if (code == buse)
-		lu_putstr(" \033[0;31m[BUSE]");
+		lu_putstr("\033[0;31m[BUSE]");
 	else if (code == timeout)
-		lu_putstr(" \033[0;33m[TIMEOUT]");
+		lu_putstr("\033[0;33m[TIMEOUT]");
 	else if (code == unexpect)
-		lu_putstr(" \033[0;31m[UNEXPECTED]");
+		lu_putstr("\033[0;31m[UNEXPECTED]");
 	else
 		ft_error();
 	lu_putendl("\033[0;00m");
@@ -38,8 +38,7 @@ static void			iterate(t_unit **cur, int *neg, unsigned int *total)
 	holder = 0;
 	while ((*cur) != NULL)
 	{
-		lu_putstr("	 > \033[0;36m");
-		lu_putstr((*cur)->name);
+		lu_putstrstr("	> \033[0;36m%\033[0;00m ", (*cur)->name);
 		holder = executioner((*cur)->test);
 		if (holder != ok)
 			*neg = *neg + 1;
@@ -58,9 +57,7 @@ int					start_test(t_unit **lst, char *test)
 	cur = *lst;
 	neg = 0;
 	total = 0;
-	lu_putstr("\033[0;00m Now Testing: \033[0;34m");
-	lu_putstr(test);
-	lu_putstr("\033[0;00m\n\n");
+	lu_putstrstr("\033[0;00m Now Testing:\033[0;34m %\033[0;00m\n\n", test);
 	iterate(&cur, &neg, &total);
 	lu_putstr("\n		(");
 	lu_putnbr(total - neg);
