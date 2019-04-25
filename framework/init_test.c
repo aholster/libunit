@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:43:00 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/20 18:46:50 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 14:24:19 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_test(t_unit **lst, char *name, int (*f)(void))
 		ft_error();
 	cur->name = name;
 	cur->test = f;
+	cur->expectation = ok;
 	cur->next = NULL;
 	lu_lstaddend(lst, cur);
 }

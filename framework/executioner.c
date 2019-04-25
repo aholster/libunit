@@ -6,19 +6,19 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 18:52:48 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 14:16:46 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 14:30:43 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static int	dreamer(void)
+static int				dreamer(void)
 {
 	sleep(TIMEOUT);
 	exit(0);
 }
 
-static int	retcode(int status)
+static enum e_retcode	retcode(int status)
 {
 	int	signaltype;
 
@@ -35,14 +35,14 @@ static int	retcode(int status)
 	return (unexpect);
 }
 
-static int	resolver(pid_t timer_pid, pid_t test_pid)
+static enum e_retcode	resolver(pid_t timer_pid, pid_t test_pid)
 {
-	pid_t	first;
-	int		status;
-	int		ret;
+	pid_t			first;
+	int				status;
+	enum e_retcode	ret;
 
 	ret = unexpect;
-	first = waitpid(WAIT_ANY , &status, 0);
+	first = waitpid(WAIT_ANY, &status, 0);
 	if (first == test_pid)
 	{
 		kill(timer_pid, SIGKILL);
@@ -57,7 +57,7 @@ static int	resolver(pid_t timer_pid, pid_t test_pid)
 	return (ret);
 }
 
-int			executioner(int (*test)(void))
+enum e_retcode			executioner(int (*test)(void))
 {
 	pid_t	timer_pid;
 	pid_t	test_pid;

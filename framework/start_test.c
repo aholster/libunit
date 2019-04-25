@@ -6,34 +6,37 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 14:12:49 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 14:32:01 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static void			putresult(int code)
+static void			putresult(int code, enum e_retcode expected)
 {
-	if (code == ok)
-		lu_putstr("\033[0;32m[OK]");
-	else if (code == ko)
-		lu_putstr("\033[0;31m[KO]");
-	else if (code == segv)
-		lu_putstr("\033[0;31m[SEGV]");
-	else if (code == buse)
-		lu_putstr("\033[0;31m[BUSE]");
-	else if (code == timeout)
-		lu_putstr("\033[0;33m[TIMEOUT]");
-	else if (code == unexpect)
-		lu_putstr("\033[0;31m[UNEXPECTED]");
-	else
-		ft_error();
-	lu_putendl("\033[0;00m");
+	if (expected == ok)
+	{
+		if (code == ok)
+			lu_putstr("\033[0;32m[OK]");
+		else if (code == ko)
+			lu_putstr("\033[0;31m[KO]");
+		else if (code == segv)
+			lu_putstr("\033[0;31m[SEGV]");
+		else if (code == buse)
+			lu_putstr("\033[0;31m[BUSE]");
+		else if (code == timeout)
+			lu_putstr("\033[0;33m[TIMEOUT]");
+		else if (code == unexpect)
+			lu_putstr("\033[0;31m[UNEXPECTED]");
+		else
+			ft_error();
+		lu_putendl("\033[0;00m");
+	}
 }
 
 static void			iterate(t_unit **cur, int *neg, unsigned int *total)
 {
-	int				holder;
+	enum e_retcode	holder;
 
 	holder = 0;
 	while ((*cur) != NULL)
@@ -42,7 +45,7 @@ static void			iterate(t_unit **cur, int *neg, unsigned int *total)
 		holder = executioner((*cur)->test);
 		if (holder != ok)
 			*neg = *neg + 1;
-		putresult(holder);
+		putresult(holder, (*cur)->expectation);
 		(*cur) = (*cur)->next;
 		(*total) += 1;
 	}
