@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   strlen_launcher.c                                  :+:    :+:            */
+/*   init_advtest.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/21 20:36:30 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/04/25 16:36:52 by aholster      ########   odam.nl         */
+/*   Created: 2019/04/25 14:21:04 by aholster       #+#    #+#                */
+/*   Updated: 2019/04/25 14:41:07 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libunit.h"
 
-int	strlen_launcher(void)
+void	init_advtest(t_unit **lst, char *name, enum e_retcode expected_result,
+ int (*f)(void))
 {
-	t_unit	*lst;
+	t_unit	*cur;
 
-	lst = NULL;
-	init_test(&lst, "barcelona_strlen_test", barcelona_strlen_test);
-	init_advtest(&lst, "aristotle_strlen_test", ok, aristotle_strlen_test);
-	init_test(&lst, "strlen_test03", strlen_test03);
-	init_advtest(&lst, "warning_infinite_loop", timeout, infiniteloop);
-	start_test(&lst, "STR_LEN");
-	return (0);
+	cur = (t_unit *)malloc(sizeof(t_unit));
+	if (cur == NULL)
+		ft_error("malloc failure");
+	cur->name = name;
+	cur->test = f;
+	cur->expectation = expected_result;
+	cur->next = NULL;
+	lu_lstaddend(lst, cur);
 }

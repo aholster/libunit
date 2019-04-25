@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 14:40:24 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 16:28:44 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef	struct		s_unit
 }					t_unit;
 
 void				ft_error(char *error);
+int					putresult(enum e_retcode code, enum e_retcode expected);
 void				init_test(t_unit **lst, char *name, int (*f)(void));
 void				init_advtest(t_unit **lst, char *name, \
 					enum e_retcode expected_result, int (*f)(void));

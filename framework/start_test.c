@@ -6,33 +6,11 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 14:42:22 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/25 16:33:39 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-
-static void			putresult(int code, enum e_retcode expected)
-{
-	if (expected == ok)
-	{
-		if (code == ok)
-			lu_putstr("\033[0;32m[OK]");
-		else if (code == ko)
-			lu_putstr("\033[0;31m[KO]");
-		else if (code == segv)
-			lu_putstr("\033[0;31m[SEGV]");
-		else if (code == buse)
-			lu_putstr("\033[0;31m[BUSE]");
-		else if (code == timeout)
-			lu_putstr("\033[0;33m[TIMEOUT]");
-		else if (code == unexpect)
-			lu_putstr("\033[0;31m[UNEXPECTED]");
-		else
-			ft_error("unknown return code");
-		lu_putendl("\033[0;00m");
-	}
-}
 
 static void			iterate(t_unit **cur, int *neg, unsigned int *total)
 {
@@ -41,11 +19,11 @@ static void			iterate(t_unit **cur, int *neg, unsigned int *total)
 	holder = 0;
 	while ((*cur) != NULL)
 	{
-		lu_putstrstr("	> \033[0;36m%\033[0;00m ", (*cur)->name);
+		lu_putstrstr("	\033[0;36m%\033[0;00m > ", (*cur)->name);
 		holder = executioner((*cur)->test);
-		if (holder != ok)
+		if (putresult(holder, (*cur)->expectation) == -1)
 			*neg = *neg + 1;
-		putresult(holder, (*cur)->expectation);
+		lu_putendl("\033[0;00m");
 		(*cur) = (*cur)->next;
 		(*total) += 1;
 	}
