@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 18:23:14 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/26 18:50:07 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define LIBUNIT_H
 
 # define TIMEOUT 3
+
+# define CASTLE 1400
 
 # define TRUE 1
 # define FALSE 0
@@ -24,6 +26,7 @@
 
 # include <sys/wait.h>
 # include <sys/errno.h>
+# include <fcntl.h>
 
 enum				e_retcode {ok = 1, ko = 0, segv = -1, buse = -2,\
 	timeout = -3, unexpect = -4};
@@ -45,8 +48,9 @@ enum e_retcode		executioner(int	(*test)(void));
 int					start_test(t_unit **lst, char *test);
 
 void				loadlaunch(t_unit **alst, int (*f)(void));
-void				activate_launcher(t_unit **alst, int argc, char **argv);
+void				activate_launchers(t_unit **alst, int argc, char **argv);
 
+int					lu_atoi(const char *str);
 void				lu_putstr(char const *s);
 void				lu_putendl(char const *s);
 size_t				lu_strlen(char const *s);

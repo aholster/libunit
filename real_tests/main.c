@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 21:49:40 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 18:15:32 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/26 16:09:50 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	main(int argc, char **argv)
 	loadlaunch(&lst, isdigit_launcher);
 	loadlaunch(&lst, strcmp_launcher);
 	loadlaunch(&lst, strlen_launcher);
-	activate_launcher(&lst, argc, argv);
+	activate_launchers(&lst, argc, argv);
 	return (0);
 }

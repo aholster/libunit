@@ -6,19 +6,21 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/25 18:12:23 by aholster      ########   odam.nl          #
+#    Updated: 2019/04/26 18:49:58 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 DATE := $(shell date)
 
-SOURCE := ft_error executioner init_test init_advtest lu_lstaddend lu_lstdel\
-	lu_putendl lu_putstr lu_putnbr lu_strlen start_test lu_putstrstr putresult\
-	loadlaunch activate_launcher
+BACKEND := ft_error lu_putendl lu_putstr lu_putnbr lu_strlen lu_lstaddend\
+ lu_lstdel lu_putstrstr lu_atoi
 
-FILEC = $(SOURCE:%=./%.c)
+SOURCE := executioner init_test init_advtest start_test putresult\
+	loadlaunch activate_launchers
 
-OBJ =	$(SOURCE:%=./%.o)
+FILEC = $(SOURCE:%=./%.c) $(BACKEND:%=./backend/%.c)
+
+OBJ =	$(SOURCE:%=./%.o) $(BACKEND:%=./backend/%.o)
 
 HEAD = libunit.h
 
@@ -42,7 +44,7 @@ $(NAME):
 	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m\n"
 
 %.o: %.c
-	@$(GCCC) -o $@ $<
+	@$(GCCC) -o $@ $< -I ./
 
 clean:
 	@echo "\033[0;33mInitializing Summary Deletions...\033[0;00m"
