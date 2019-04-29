@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 18:03:30 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 18:24:00 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/29 14:21:26 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	loadlaunch(t_unit **alst, int (*f)(void))
 		ft_error("malloc failure");
 	cur->test = f;
 	cur->name = NULL;
-	cur->expectation = -4;
+	cur->expectation = unexpect;
 	cur->next = NULL;
 	lu_lstaddend(alst, cur);
 }

@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 18:11:47 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/26 19:13:26 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/29 14:41:38 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,9 @@ void		numberedlauncher(t_unit **alst, int argc, char **argv)
 
 void		activate_launchers(t_unit **alst, int argc, char **argv)
 {
+	t_unit	*begin;
+
+	begin = *alst;
 	startupheader();
 	if (argc > 1)
 		numberedlauncher(alst, argc - 1, &argv[1]);
@@ -146,6 +149,6 @@ void		activate_launchers(t_unit **alst, int argc, char **argv)
 			(*alst)->test();
 			(*alst) = (*alst)->next;
 		}
-	lu_lstdel(alst);
+	lu_lstdel(&begin);
 	shutdownender();
 }
