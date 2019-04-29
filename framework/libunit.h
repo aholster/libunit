@@ -6,14 +6,14 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/26 18:50:07 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/29 17:21:50 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBUNIT_H
 # define LIBUNIT_H
 
-# define TIMEOUT 3
+# define TIMEOUT 8
 
 # define CASTLE 1400
 

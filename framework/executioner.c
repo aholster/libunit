@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 18:52:48 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 14:40:57 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/29 18:07:20 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,17 @@
 
 static int				dreamer(void)
 {
-	sleep(TIMEOUT);
+	sleep(TIMEOUT - 5);
+	lu_putstr("	5...");
+	sleep(1);
+	lu_putstr("\033[5D	4...");
+	sleep(1);
+	lu_putstr("\033[5D	3...");
+	sleep(1);
+	lu_putstr("\033[5D	2...");
+	sleep(1);
+	lu_putstr("\033[5D	1...");
+	sleep(1);
 	exit(0);
 }
 
