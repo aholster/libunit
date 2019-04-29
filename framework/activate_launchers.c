@@ -55,29 +55,70 @@ static void	shutdownender(void)
 	lu_putstr("π π π π π π π φφφφ ±±±± ║─┼─║ ██↑ ╦╦╦ ╤╤╤╤ ╦╦╦╦ ╠╠╠ ╩╩╩╩╩ ╣╣╣╣ ¥¥¥ ∩∩∩∩∩ │││││ ╬╬╬╬ ┴┴┴ ▌▌▌▌");
 }
 
+size_t		lstlen(t_unit **alst)
+{
+	t_unit	*temp;
+	size_t	len;
+
+	len = 0;
+	temp = *alst;
+	if (temp == NULL)
+		return len;
+	while (temp != NULL)
+	{
+		len++;
+		temp = temp->next;
+	}
+	return (len);
+}
+
 void		numberedlauncher(t_unit **alst, int argc, char **argv)
 {
-	int	current;
-	int	counter;
-	int	argsproc;
+	size_t i;
+	int (**array)(void);
+	size_t len;
 
-	current = -2;
-	counter = 0;
-	argsproc = 0;
-	while (argsproc < argc)
+	i = 0;
+	len = lstlen(alst);
+	array = (int (**)(void))malloc(sizeof(int (*)(void)) * len);
+	while (i < len)
 	{
-		current = lu_atoi(argv[argsproc]);
-		while ((*alst) != NULL && counter < current)
-		{
-			counter++;
-			(*alst) = (*alst)->next;
-		}
-		if (*alst == NULL || counter != current)
-			return ;
-		(*alst)->test();
-		argsproc++;
+		array[i] = (*alst)->test;
+		(*alst) = (*alst)->next;
+		i++;
+	}
+	i = 0;
+	while (i < (size_t)argc)
+	{
+		if (lu_atoi(argv[i]) < argc)
+			(array[lu_atoi(argv[i])])();
+		i++;
 	}
 }
+
+// void		numberedlauncher(t_unit **alst, int argc, char **argv)
+// {
+// 	int	current;
+// 	int	counter;
+// 	int	argsproc;
+
+// 	current = -2;
+// 	counter = 0;
+// 	argsproc = 0;
+// 	while (argsproc < argc)
+// 	{
+// 		current = lu_atoi(argv[argsproc]);
+// 		while ((*alst) != NULL && counter < current)
+// 		{
+// 			counter++;
+// 			(*alst) = (*alst)->next;
+// 		}
+// 		if (*alst == NULL || counter != current)
+// 			return ;
+// 		(*alst)->test();
+// 		argsproc++;
+// 	}
+// }
 
 //	char	*castle;
 //	ssize_t	status;
