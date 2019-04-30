@@ -6,16 +6,14 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/29 17:21:50 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/30 15:53:21 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBUNIT_H
 # define LIBUNIT_H
 
-# define TIMEOUT 8
-
-# define CASTLE 1400
+# define TIMEOUT 6
 
 # define TRUE 1
 # define FALSE 0
@@ -49,6 +47,7 @@ int					start_test(t_unit **lst, char *test);
 
 void				loadlaunch(t_unit **alst, int (*f)(void));
 void				activate_launchers(t_unit **alst, int argc, char **argv);
+void				launcherparser(t_unit **alst, size_t argc, char **argv);
 
 int					lu_atoi(const char *str);
 void				lu_putstr(char const *s);

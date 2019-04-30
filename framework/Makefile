@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/26 18:49:58 by aholster      ########   odam.nl          #
+#    Updated: 2019/04/29 18:48:56 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ BACKEND := ft_error lu_putendl lu_putstr lu_putnbr lu_strlen lu_lstaddend\
  lu_lstdel lu_putstrstr lu_atoi
 
 SOURCE := executioner init_test init_advtest start_test putresult\
-	loadlaunch activate_launchers
+	loadlaunch activate_launchers launcherparser
 
 FILEC = $(SOURCE:%=./%.c) $(BACKEND:%=./backend/%.c)
 
