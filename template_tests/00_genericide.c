@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   00_genericide.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/20 21:49:40 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/30 16:24:08 by aholster      ########   odam.nl         */
+/*   Created: 2019/04/30 16:55:07 by aholster       #+#    #+#                */
+/*   Updated: 2019/04/30 16:55:43 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	main(int argc, char **argv)
+int	genericide(void)
 {
-	t_unit	*lst;
-	
-//	loadlaunch(&lst, atoi_launcher);
-//	loadlaunch(&lst, isalpha_launcher);
-//	loadlaunch(&lst, isdigit_launcher);
-//	loadlaunch(&lst, strcmp_launcher);
-//	loadlaunch(&lst, strlen_launcher);
-	activate_launchers(&lst, argc, argv);
-	return (0);
+	if ()
+		return (0);
+	else
+		return (-1);
 }

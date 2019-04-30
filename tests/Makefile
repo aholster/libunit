@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/22 14:50:59 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/30 16:20:34 by aholster      ########   odam.nl          #
+#    Updated: 2019/04/30 16:23:26 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,28 +14,27 @@ DATE := $(shell date)
 
 SOURCEPATH := ./
 
-SOURCEFILES := ft_atoi ft_isalpha ft_isdigit ft_strcmp ft_strlen
+SOURCEFILES := 
 
-00LOC = ./ft_atoi/
+00LOC = .//
 
-TESTS00 = atoi_test01 atoi_test02 atoi_test03 atoi_launcher
+TESTS00 = 
 
-01LOC = ./ft_isalpha/
+01LOC = .//
 
-TESTS01 = isalpha_test01 isalpha_test02 isalpha_test03 isalpha_launcher
+TESTS01 = 
 
-02LOC = ./ft_isdigit/
+02LOC = .//
 
-TESTS02 = isdigit_test01 isdigit_test02 isdigit_test03 isdigit_launcher
+TESTS02 = 
 
-03LOC = ./ft_strcmp/
+03LOC = .//
 
-TESTS03 = strcmp_test01 strcmp_test02 strcmp_test03 strcmp_launcher
+TESTS03 =
 
-04LOC = ./ft_strlen/
+04LOC = .//
 
-TESTS04 = strlen_test01 strlen_test02 strlen_test03 strlen_launcher \
-			strlen_test04 
+TESTS04 =
 
 SOURCE := $(TESTS00:%=$(00LOC)%) $(TESTS01:%=$(01LOC)%) \
 			$(TESTS02:%=$(02LOC)%) $(TESTS03:%=$(03LOC)%) \
