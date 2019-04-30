@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 16:54:19 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/30 19:46:57 by aholster      ########   odam.nl         */
+/*   Updated: 2019/04/30 19:54:11 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@ int	basic_writing(void)
 {
 	char	*output;
 	size_t	readsize;
+	ssize_t	status;
 	int		pipe[2];
 
 	if (pipe(pipe) == -1)
@@ -22,11 +23,16 @@ int	basic_writing(void)
 		ft_error("failed to close stdin");
 	if (dup2(pipe[1], 1) == -1)
 		ft_error("failed to reroute fd");
+	
 	func();
+
 	output = (char *)malloc(sizeof(char) * readsize + 1);
 	if (output == NULL)
 		ft_error("malloc failed");
-	read();
+	status = read(pipe[0], output, readsize);
+	if (status == -1)
+		ft_error("read failure");
+	output[status] = '\0';
 
 	if (output == expected)
 		return (0);
