@@ -6,13 +6,13 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:47:11 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/30 19:49:25 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/01 15:47:54 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static void	lu_putstrerr(char const *s)
+static void		lu_putstrerr(char const *s)
 {
 	write(2, s, lu_strlen(s));
 }
@@ -45,7 +45,6 @@ static void		lu_puterror(char *format, char *str)
 		lu_putstrerr(format);
 	}
 }
-
 
 void			ft_error(char *error)
 {
