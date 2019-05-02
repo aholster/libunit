@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 16:54:19 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/02 17:36:55 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/02 21:09:15 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	basic_writing(void)
 	if (status == -1)
 		ft_error("read failure");
 	output[status] = '\0';
+
+	
 	dprintf(2, "strs: %s %s, amount read: %zu\n", output, input, status);
 	if (strcmp(input, output) == 0)
 		return (0);
