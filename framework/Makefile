@@ -6,14 +6,15 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/29 18:48:56 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/02 17:48:01 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 DATE := $(shell date)
 
 BACKEND := ft_error lu_putendl lu_putstr lu_putnbr lu_strlen lu_lstaddend\
- lu_lstdel lu_putstrstr lu_atoi
+ lu_lstdel lu_putstrstr lu_atoi lu_putstr_fd lu_putendl_fd lu_putstrstr_fd\
+ lu_putnbr_fd
 
 SOURCE := executioner init_test init_advtest start_test putresult\
 	loadlaunch activate_launchers launcherparser

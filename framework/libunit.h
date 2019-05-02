@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/30 15:53:21 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/02 20:27:00 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <unistd.h>
 # include <signal.h>
 
+# include <string.h>
 # include <sys/wait.h>
 # include <sys/errno.h>
 # include <fcntl.h>
@@ -52,10 +53,16 @@ void				launcherparser(t_unit **alst, size_t argc, char **argv);
 int					lu_atoi(const char *str);
 void				lu_putstr(char const *s);
 void				lu_putendl(char const *s);
+void				lu_putnbr(int n);
+void				lu_putstrstr(char *format, char *str);
+
+void				lu_putstr_fd(char const *s, int fd);
+void				lu_putendl_fd(char const *s, int fd);
+void				lu_putstrstr_fd(char *format, char *str, int fd);
+void				lu_putnbr_fd(int n, int fd);
+
 size_t				lu_strlen(char const *s);
 void				lu_lstdel(t_unit **alst);
 t_unit				*lu_lstaddend(t_unit **lst, t_unit *new);
-void				lu_putnbr(int n);
-void				lu_putstrstr(char *format, char *str);
 
 #endif

@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   02_writing_test.c                                  :+:    :+:            */
+/*   03_writing_comparison.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/30 16:54:19 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/02 17:36:55 by aholster      ########   odam.nl         */
+/*   Created: 2019/05/02 17:34:37 by aholster       #+#    #+#                */
+/*   Updated: 2019/05/02 20:27:18 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "header.h"
-
-#include <unistd.h>
-#include <string.h>
 #include "libunit.h"
 #include <stdio.h>
-int	basic_writing(void)
+int	advanced_writing(void)
 {
 	char	*output;
+	char	*check;
 	char	*input;
 	size_t	readsize;
 	ssize_t	status;
@@ -43,6 +40,24 @@ int	basic_writing(void)
 	if (status == -1)
 		ft_error("read failure");
 	output[status] = '\0';
+
+	write(1, input, 3);
+
+	check = (char *)malloc(sizeof(char) * readsize + 1);
+	if (check == NULL)
+		ft_error("malloc failed");
+	status = read(pipes[0], check, readsize);
+	if (status == -1)
+		ft_error("read failure");
+	check[status] = '\0';
+
+
+	if (close(pipes[0]) == -1)
+		ft_error("failed to close pipe");
+	if (close(pipes[1]) == -1)
+		ft_error("failed to close pipe");
+
+
 	dprintf(2, "strs: %s %s, amount read: %zu\n", output, input, status);
 	if (strcmp(input, output) == 0)
 		return (0);
@@ -56,6 +71,6 @@ int	main(void)
 
 	lu_putendl("");
 	pointer = NULL;
-	dprintf(2, "return: %d\n", basic_writing());
+	dprintf(2, "return: %d\n", advanced_writing());
 	return (0);
 }
