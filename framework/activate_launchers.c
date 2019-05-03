@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 18:11:47 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/01 15:51:32 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 16:09:52 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,12 @@ static void		startupheader(void)
 
 static void		shutdownender(void)
 {
-	lu_putstr("π π π π π π π φφφφ ±±±± ║─┼─║ ██↑ ╦╦╦ ╤╤╤╤ ╦╦╦╦ ╠╠╠ ╩╩╩╩╩ ╣╣╣╣ ¥¥¥ ∩∩∩∩∩ │││││ ╬╬╬╬ ┴┴┴ ▌▌▌▌");
+	lu_putendl("              ╦╤╦╤╦╤╦            ╦╤╦╤╦╤╦              ");
+	lu_putendl("╦╤╦╤╦╤╦       ║─┼─┼─║            ║─┼─┼─║       ╦╤╦╤╦╤╦");
+	lu_putendl("║─┼─┼─║       ║Ω│Ω│Ω║            ║Ω│Ω│Ω║       ║─┼─┼─║");
+	lu_putendl("║Ω│Ω│Ω║       ║φ│¥│φ║║          ║║φ│¥│φ║       ║Ω│Ω│Ω║");
+	lu_putendl("║↑│↑│↑║       ║│││││║║          ║║│││││║       ║↑│↑│↑║");
+	lu_putendl("║│││││║█▄█▄█▄█║│││││║║          ║║│││││║█▄█▄█▄█║│││││║");
 }
 
 void			activate_launchers(t_unit **alst, int argc, char **argv)

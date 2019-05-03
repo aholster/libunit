@@ -6,15 +6,12 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 16:54:19 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/02 21:09:15 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/03 16:29:23 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "header.h"
+#include "header.h"
 
-#include <unistd.h>
-#include <string.h>
-#include "libunit.h"
 #include <stdio.h>
 int	basic_writing(void)
 {
@@ -50,14 +47,4 @@ int	basic_writing(void)
 		return (0);
 	else
 		return (-1);
-}
-
-int	main(void)
-{
-	char	*pointer;
-
-	lu_putendl("");
-	pointer = NULL;
-	dprintf(2, "return: %d\n", basic_writing());
-	return (0);
 }

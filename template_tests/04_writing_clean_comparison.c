@@ -1,37 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   03_writing_comparison.c                            :+:    :+:            */
+/*   04_writing_clean_comparison.c                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/02 17:34:37 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/03 16:29:40 by aholster      ########   odam.nl         */
+/*   Created: 2019/05/03 16:28:59 by aholster       #+#    #+#                */
+/*   Updated: 2019/05/03 16:47:49 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 #include <stdio.h>
+
+typedef struct	s_redir;
+{
+	int		originfd;
+	int		backupfd;
+	int		pipes[2];
+}				t_redir;
+
+int		capture_fd(int tarfd, t_redit *fd_data)
+{
+	if (pipe(fd_data->pipes) == -1)
+		ft_error("pipes failure");
+	if (dup2(tarfd, fd_data->backupfd) == -1)
+		ft_error("failed to backup fd");
+	if (close(tarfd) == -1)
+		ft_error("failed to close fd");
+	fd_data->originfd = tarfd;
+	if (dup2(fd_data->pipes[1], 1) == -1)
+		ft_error("failed to reroute fd");
+	return (0);
+}
+
 int	advanced_writing(void)
 {
 	char	*output;
 	char	*check;
 	char	*input;
-	size_t	readsize;
-	ssize_t	status;
-	int		pipes[2];
+	t_redit	fd_data;
 
 	readsize = 14;
 	input = "one";
 
-	if (pipe(pipes) == -1)
-		ft_error("pipes failure");
-	if (close(1) == -1)
-		ft_error("failed to close stdin");
-	if (dup2(pipes[1], 1) == -1)
-		ft_error("failed to reroute fd");
-	
+	capture_fd(1, &fd_data);
+
 	lu_putstr(input);
 
 	output = (char *)malloc(sizeof(char) * readsize + 1);
