@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/02 17:48:01 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/04 16:45:51 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ OBJ =	$(SOURCE:%=./%.o) $(BACKEND:%=./backend/%.o)
 HEAD = libunit.h
 
 NAME = libunit.a
+
+SCRIPTS = ./scripts/protoextract
 
 NORM = norminette $(FILEC) $(HEAD) | grep -e "Error"  -e "Warning" -B 1
 
@@ -69,7 +71,7 @@ norm:
 =====*=====*===*=====*=====+++**"
 
 add:
-	@git add $(FILEC) $(HEAD) Makefile
+	@git add $(FILEC) $(HEAD) $(SCRIPTS) Makefile
 	git status
 
 push: norm

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ "$#" -ne 2 ];then
+	echo "ERROR: WRONG NUMBER OF ARGUMENTS"
+	exit -1
+fi
+
+IFS=$'\n'
+PROTOS=$(find . -name '[0-9][0-9]_*.c' -exec grep {} -e"^int.*(void)$" \;)
+
+HEADER=$(sed '/^# pragma mark prototypes$/q' ./$1)
+#HEADER=$(grep header.h -v -e"^#endif$")
+
+
+printf "$HEADER\n\n" > $2
+for proto in $PROTOS; do
+	echo "$proto;" >> $2
+done
+printf "\n#endif\n" >> $2

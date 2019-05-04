@@ -6,19 +6,19 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/22 14:50:59 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/04 16:30:01 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/04 16:48:25 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 DATE := $(shell date)
 
-SOURCE := $(shell find . -name '[0-9][0-9]_*.c') ./main.c
+TESTS := $(shell find . -name '[0-9][0-9]_*.c') ./main.c
 
 SOURCEPATH := ./
 
 FRAMEPATH := ./../framework/
 
-FILEC = $(SOURCE:%=%)
+FILEC = $(TESTS)
 
 HEAD = header.h
 
@@ -28,8 +28,8 @@ NORM = norminette $(FILEC) $(HEAD) | grep -e "Error"  -e "Warning" -B 1
 
 CC = gcc -Wall -Werror -Wextra
 
-print:
-	@echo $(SOURCE)
+init:
+	@./../framework/scripts/protoextract ./$(HEAD) ./$(HEAD)
 
 all: $(NAME)
 
