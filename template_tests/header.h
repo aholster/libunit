@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/21 16:26:05 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/05/03 21:31:06 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/04 15:45:22 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define READSIZE 6
 /*
 **	make sure readsize is a sufficiently large number
+**	if you get read_errors, try changing READSIZE
 **
 **	fill in necesary includes and prototypes for tests bellow this line
 */
@@ -30,5 +31,7 @@ typedef struct	s_fds
 }				t_fds;
 
 //# include "project_here.h"
+
+# pragma mark prototypes
 
 #endif

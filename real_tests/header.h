@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/21 16:26:05 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/04/30 16:27:29 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/04 15:47:57 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "libunit.h"
 # include "libft.h"
+
+# pragma mark prototypes
 
 int		atoi_positive_test(void);
 int		atoi_doublesign_test(void);

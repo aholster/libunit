@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/21 20:45:56 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/05/03 17:04:21 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/04 16:00:14 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	d_isalpha_test(void)
 {
+	ft_error("purposeful crash");
 	if (ft_isalpha('d') == 1)
 		return (0);
 	else

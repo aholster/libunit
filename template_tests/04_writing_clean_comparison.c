@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 16:28:59 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/03 21:38:59 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/04 14:15:38 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,4 @@ int	advanced_clean_writing(void)
 		return (0);
 	else
 		return (-1);
-}
-
-int main(void)
-{
-	printf("begining test...\n");
-	printf("return was %d \n", advanced_clean_writing());
-	return (0);
 }
