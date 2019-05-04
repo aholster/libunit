@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/22 14:50:59 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/04 16:48:25 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/04 16:49:44 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ init:
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): init
 	@make all -C $(FRAMEPATH)
 	@echo "\033[0;33mStarting assembly of $(NAME)…\033[0;00m"
 	@$(CC) $(FILEC) -o $(NAME) -I $(FRAMEPATH) -L $(FRAMEPATH) -lunit \
