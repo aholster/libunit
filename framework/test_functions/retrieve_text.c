@@ -6,13 +6,12 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 18:36:33 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/03 21:35:19 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/05 18:00:24 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "test_functions.h"
 
-#include <stdio.h>
 static void	*lu_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	index;
@@ -68,6 +67,7 @@ size_t		retrieve_text(char **output, t_fds *fd_data)
 	while (status >= READSIZE)
 	{
 		status = read(fd_data->pipes[0], temp, READSIZE);
+		if (status == -1 && errno == EAGAIN)
 		if (status == -1)
 			ft_error("read failure");
 		*output = lu_memjoin(holder, resultsize, temp, status);

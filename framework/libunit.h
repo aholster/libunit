@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/02 20:27:00 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/05 18:07:02 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # define TRUE 1
 # define FALSE 0
+
+# include "test_functions.h"
 
 # include <stdlib.h>
 # include <unistd.h>

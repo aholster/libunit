@@ -6,53 +6,13 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 16:28:59 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/04 14:15:38 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/05 18:05:00 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
 #include <stdio.h>
-size_t		retrieve_text(char **output, t_fds *fd_data);
-
-void	capture_fd(int tarfd, t_fds *fd_data)
-{
-	if (pipe(fd_data->pipes) == -1)
-		ft_error("pipe creation failure");
-	fd_data->backupfd = dup(tarfd);
-	if (fd_data->backupfd == -1)
-		ft_error("failed to backup fd");
-	fd_data->originfd = tarfd;
-	if (close(tarfd) == -1)
-		ft_error("failed to close fd");
-	if (dup2(fd_data->pipes[1], tarfd) == -1)
-		ft_error("failed to reroute fd");
-	if (fcntl(fd_data->pipes[0], F_SETFL, O_NONBLOCK) == -1)
-		ft_error("failed to fcntl pipe");
-}
-
-/*
-**	fnctl to set pipe read-end to non_block will result in read error
-**	upon attempt to read empty pipe
-*/
-
-void	reset_fd(t_fds *fd_data)
-{
-	if (close(fd_data->pipes[0]) == -1)
-		ft_error("failed to close pipe");
-	if (close(fd_data->pipes[1]) == -1)
-		ft_error("failed to close pipe");
-	if (close(fd_data->originfd) == -1)
-		ft_error("failed to close rerouted fd");
-	if (dup2(fd_data->backupfd, fd_data->originfd) == -1)
-		ft_error("failed to restore fd");
-	if (close(fd_data->backupfd) == -1)
-		ft_error("failed to close backup");
-	fd_data->originfd = -1;
-	fd_data->backupfd = -1;
-	fd_data->pipes[0]= -1;
-	fd_data->pipes[1] = -1;
-}
 
 int	advanced_clean_writing(void)
 {
@@ -76,4 +36,11 @@ int	advanced_clean_writing(void)
 		return (0);
 	else
 		return (-1);
+}
+
+int	main(void)
+{
+	printf("starting test\n");
+	printf("return: %d \n", advanced_clean_writing());
+	return (0);
 }

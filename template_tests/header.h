@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/21 16:26:05 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/05/04 16:48:35 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/05 18:06:37 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@
 **	fill in necesary includes and prototypes for tests bellow this line
 */
 
-typedef struct	s_fds
-{
-	int		originfd;
-	int		backupfd;
-	int		pipes[2];
-}				t_fds;
-
 //# include "project_here.h"
 
 # pragma mark prototypes
+
+int	genericide(void);
+int	basic_return(void);
+int	basic_writing(void);
+int	advanced_writing(void);
+int	advanced_clean_writing(void);
+int	main(void);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/04 16:45:51 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/05 18:23:11 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,17 @@ BACKEND := ft_error lu_putendl lu_putstr lu_putnbr lu_strlen lu_lstaddend\
  lu_lstdel lu_putstrstr lu_atoi lu_putstr_fd lu_putendl_fd lu_putstrstr_fd\
  lu_putnbr_fd
 
+TESTFUNC := capture_fd reset_fd retrieve_text
+
+TESTFUNCPATH := ./test_functions/
+
 SOURCE := executioner init_test init_advtest start_test putresult\
 	loadlaunch activate_launchers launcherparser
 
-FILEC = $(SOURCE:%=./%.c) $(BACKEND:%=./backend/%.c)
+FILEC = $(SOURCE:%=./%.c) $(BACKEND:%=./backend/%.c)\
+		$(TESTFUNC:%=$(TESTFUNCPATH)/%.c)
 
-OBJ =	$(SOURCE:%=./%.o) $(BACKEND:%=./backend/%.o)
+OBJ =	$(FILEC:%.c=%.o)
 
 HEAD = libunit.h
 
@@ -47,7 +52,7 @@ $(NAME):
 	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m\n"
 
 %.o: %.c
-	@$(GCCC) -o $@ $< -I ./
+	@$(GCCC) -o $@ $< -I ./ -I $(TESTFUNCPATH)
 
 clean:
 	@echo "\033[0;33mInitializing Summary Deletions...\033[0;00m"
