@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 18:36:33 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/05 18:00:24 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/05 18:27:43 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ size_t		retrieve_text(char **output, t_fds *fd_data)
 	while (status >= READSIZE)
 	{
 		status = read(fd_data->pipes[0], temp, READSIZE);
-		if (status == -1 && errno == EAGAIN)
-		if (status == -1)
+		if (status == -1 && errno != EAGAIN)
 			ft_error("read failure");
 		*output = lu_memjoin(holder, resultsize, temp, status);
 		if (*output == NULL)
