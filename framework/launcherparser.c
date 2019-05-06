@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/29 18:47:40 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/03 19:49:54 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/06 16:07:34 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,28 @@ static size_t	lstlen(t_unit **alst)
 
 void			launcherparser(t_unit **alst, size_t argc, char **argv)
 {
-	size_t	i;
+	size_t	index;
 	int		(**array)(void);
 	int		num;
 	size_t	len;
 
-	i = 0;
+	index = 0;
 	len = lstlen(alst);
 	array = (int (**)(void))malloc(sizeof(int (*)(void)) * len);
 	if (array == NULL)
 		ft_error("malloc failed");
-	while (i < len)
+	while (index < len)
 	{
-		array[i] = (*alst)->test;
+		array[index] = (*alst)->test;
 		(*alst) = (*alst)->next;
-		i++;
+		index++;
 	}
-	i = 0;
-	while (i < argc)
+	index = 0;
+	while (index < argc)
 	{
-		num = lu_atoi(argv[i]);
+		num = lu_atoi(argv[index]);
 		if (num > 0 && (size_t)num <= len)
 			(array[num - 1])();
-		i++;
+		index++;
 	}
 }

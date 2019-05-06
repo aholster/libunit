@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/05 15:31:56 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/05 18:33:38 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/06 16:26:43 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ typedef struct	s_fds
 	int			pipes[2];
 }				t_fds;
 
-# define READSIZE 6
+# ifndef READSIZE
+#  define READSIZE 6
+# endif
 
 size_t			retrieve_text(char **output, t_fds *fd_data);
 void			capture_fd(int tarfd, t_fds *fd_data);
