@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/05 15:31:56 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/06 16:26:43 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/06 18:59:31 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libunit.h"
 
+# include <stdarg.h>
 # include <string.h>
 
 typedef struct	s_fds
@@ -28,6 +29,7 @@ typedef struct	s_fds
 #  define READSIZE 6
 # endif
 
+void			assert(int expression, const char *format, ...);
 size_t			retrieve_text(char **output, t_fds *fd_data);
 void			capture_fd(int tarfd, t_fds *fd_data);
 void			reset_fd(t_fds *fd_data);

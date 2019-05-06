@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 18:11:47 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/05 21:20:06 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/06 21:37:04 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void			activate_launchers(t_unit **alst, int argc, char **argv)
 	else
 		while ((*alst) != NULL)
 		{
+			lu_putstrstr("\033[0;00m Now Testing:\033[0;34m %\033[0;00m\n\n",\
+					(*alst)->name);
 			(*alst)->test();
 			(*alst) = (*alst)->next;
 		}

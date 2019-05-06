@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/29 18:47:40 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/06 16:07:34 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/06 21:34:11 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ void			launcherparser(t_unit **alst, size_t argc, char **argv)
 	{
 		num = lu_atoi(argv[index]);
 		if (num > 0 && (size_t)num <= len)
+		{
+			lu_putstrstr("\033[0;00m Now Testing:\033[0;34m %\033[0;00m\n\n", (*alst)->name);
 			(array[num - 1])();
+		}
 		index++;
 	}
 }

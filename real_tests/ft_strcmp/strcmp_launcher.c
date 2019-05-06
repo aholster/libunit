@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/21 20:38:00 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/04/25 14:19:06 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/06 21:32:41 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int	strcmp_launcher(void)
 	init_test(&lst, "diff_strcmp_test", diff_strcmp_test);
 	init_test(&lst, "same_strcmp_test", same_strcmp_test);
 	init_test(&lst, "empty_strcmp_test", empty_strcmp_test);
-	start_test(&lst, "STR_CMP");
+	start_test(&lst);
 	return (0);
 }

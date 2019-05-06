@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/06 16:26:25 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/06 21:28:54 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,23 @@ typedef	struct		s_unit
 
 void				ft_error(char *error);
 int					putresult(t_retcode code, t_retcode expected);
-void				init_test(t_unit **lst, char *name, int (*test_ptr)(void));
-void				init_advtest(t_unit **lst, char *name, \
+void				init_test(t_unit **lst, const char *name,\
+					int (*test_ptr)(void));
+void				init_advtest(t_unit **lst, const char *name, \
 					t_retcode expected_result, int (*test_ptr)(void));
 t_retcode			executioner(int	(*test)(void));
-int					start_test(t_unit **lst, char *test);
+int					start_test(t_unit **lst);
 
-void				loadlaunch(t_unit **alst, int (*f)(void));
+void				loadlaunch(t_unit **alst, const char *block_name,\
+					int (*f)(void));
 void				activate_launchers(t_unit **alst, int argc, char **argv);
 void				launcherparser(t_unit **alst, size_t argc, char **argv);
 
+void				*lu_memcpy(void *dst, const void *src, size_t n);
+void				*lu_memjoin(const void *mem1, size_t size1,\
+					const void *mem2, size_t size2);
+
+char				*lu_strdup(char const *s1);
 int					lu_atoi(const char *str);
 void				lu_putstr(char const *s);
 void				lu_putendl(char const *s);

@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   lu_strdup.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/20 21:49:40 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/06 21:32:10 by aholster      ########   odam.nl         */
+/*   Created: 2019/01/17 10:35:30 by aholster       #+#    #+#                */
+/*   Updated: 2019/05/06 21:23:30 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "libunit.h"
 
-int	main(int argc, char **argv)
+char	*lu_strdup(char const *s1)
 {
-	t_unit	*lst;
-	
-	loadlaunch(&lst, "ATOI", atoi_launcher);
-	loadlaunch(&lst, "ISALPHA", isalpha_launcher);
-	loadlaunch(&lst, "ISDIGIT", isdigit_launcher);
-	loadlaunch(&lst, "STRCMP", strcmp_launcher);
-	loadlaunch(&lst, "STRLEN", strlen_launcher);
-	activate_launchers(&lst, argc, argv);
-	return (0);
+	char	*output;
+	size_t	len;
+
+	len = lu_strlen(s1);
+	output = (char *)malloc(sizeof(char) * (len + 1));
+	if (output == NULL)
+		return (NULL);
+	lu_memcpy((void *)output, (const void *)s1, len);
+	output[len] = '\0';
+	return (output);
 }

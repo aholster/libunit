@@ -6,44 +6,11 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 18:36:33 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/05 18:32:48 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/06 21:27:00 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_functions.h"
-
-static void		*lu_memcpy(void *dst, const void *src, size_t n)
-{
-	size_t	index;
-
-	index = 0;
-	while (n - index >= 8)
-	{
-		*((long long *)(dst + index)) = *((long long *)(src + index));
-		index += 8;
-	}
-	while (index < n)
-	{
-		((char *)dst)[index] = ((const char *)src)[index];
-		index++;
-	}
-	return (dst);
-}
-
-static void		*lu_memjoin(const void *mem1, size_t size1,\
-					const void *mem2, size_t size2)
-{
-	size_t	index;
-	char	*ret;
-
-	index = 0;
-	ret = (char *)malloc(sizeof(char) * size1 + size2);
-	if (ret == NULL)
-		return (NULL);
-	lu_memcpy(ret, mem1, size1);
-	lu_memcpy(&ret[size1], mem2, size2);
-	return (ret);
-}
 
 static size_t	stringerize(char **output, char *holder, size_t resultsize)
 {

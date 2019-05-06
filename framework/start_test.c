@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/06 16:26:12 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/06 21:35:07 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void			iterate(t_unit **current, int *failed_tests,\
 	}
 }
 
-int					start_test(t_unit **lst, char *test)
+int					start_test(t_unit **lst)
 {
 	t_unit			*current;
 	int				failed_tests;
@@ -39,7 +39,6 @@ int					start_test(t_unit **lst, char *test)
 	current = *lst;
 	failed_tests = 0;
 	total = 0;
-	lu_putstrstr("\033[0;00m Now Testing:\033[0;34m %\033[0;00m\n\n", test);
 	iterate(&current, &failed_tests, &total);
 	lu_putstr("\n		(");
 	lu_putnbr(total - failed_tests);
