@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   strlen_launcher.c                                  :+:    :+:            */
+/*   test_functions.h                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/04/21 20:36:30 by dsaripap       #+#    #+#                */
-/*   Updated: 2019/05/05 21:11:51 by aholster      ########   odam.nl         */
+/*   Created: 2019/05/05 15:31:56 by aholster       #+#    #+#                */
+/*   Updated: 2019/05/05 18:33:38 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#ifndef TEST_FUNCTIONS_H
+# define TEST_FUNCTIONS_H
 
-int	strlen_launcher(void)
+# include "libunit.h"
+
+# include <string.h>
+
+typedef struct	s_fds
 {
-	t_unit	*lst;
+	int			originfd;
+	int			backupfd;
+	int			pipes[2];
+}				t_fds;
 
-	lst = NULL;
-	init_test(&lst, "barcelona_strlen_test", barcelona_strlen_test);
-	init_advtest(&lst, "aristotle_strlen_test", segv, aristotle_strlen_test);
-	init_test(&lst, "strlen_test03", strlen_test03);
-	init_advtest(&lst, "warning_infinite_loop", timeout, infiniteloop);
-	start_test(&lst, "STR_LEN");
-	return (0);
-}
+# define READSIZE 6
+
+size_t			retrieve_text(char **output, t_fds *fd_data);
+void			capture_fd(int tarfd, t_fds *fd_data);
+void			reset_fd(t_fds *fd_data);
+
+#endif

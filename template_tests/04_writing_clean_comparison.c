@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 16:28:59 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/05 18:05:00 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/05 18:29:31 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	advanced_clean_writing(void)
 
 	input = "***%9k";
 	capture_fd(1, &fd_data);	
-	printf("1234 %9%\n");
+	printf("1234 %12%\n");
 	b_read = retrieve_text(&ret, &fd_data);
-	printf("1234 %9%\n");
+	printf("1234 %12%\n");
 	b_read_test = retrieve_text(&ret_test, &fd_data);
 	reset_fd(&fd_data);
 	

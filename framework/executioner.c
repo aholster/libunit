@@ -6,15 +6,15 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 18:52:48 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/30 15:54:46 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/06 15:50:12 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static int				dreamer(void)
+static int			dreamer(void)
 {
-	if (timeout <= 5)
+	if (TIMEOUT <= 5)
 	{
 		sleep(TIMEOUT);
 		exit(0);
@@ -33,7 +33,7 @@ static int				dreamer(void)
 	exit(0);
 }
 
-static enum e_retcode	retcode(int status)
+static t_retcode	retcode(int status)
 {
 	int	signaltype;
 
@@ -42,19 +42,19 @@ static enum e_retcode	retcode(int status)
 	if (WIFSIGNALED(status) != FALSE)
 	{
 		signaltype = WTERMSIG(status);
-		if (signaltype == 10)
+		if (signaltype == SIGBUS)
 			return (buse);
-		else if (signaltype == 11)
+		else if (signaltype == SIGSEGV)
 			return (segv);
 	}
 	return (unexpect);
 }
 
-static enum e_retcode	resolver(pid_t timer_pid, pid_t test_pid)
+static t_retcode	resolver(pid_t timer_pid, pid_t test_pid)
 {
 	pid_t			first;
 	int				status;
-	enum e_retcode	ret;
+	t_retcode		ret;
 
 	ret = unexpect;
 	first = waitpid(WAIT_ANY, &status, 0);
@@ -72,7 +72,7 @@ static enum e_retcode	resolver(pid_t timer_pid, pid_t test_pid)
 	return (ret);
 }
 
-enum e_retcode			executioner(int (*test)(void))
+t_retcode			executioner(int (*test)(void))
 {
 	pid_t	timer_pid;
 	pid_t	test_pid;

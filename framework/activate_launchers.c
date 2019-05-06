@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 18:11:47 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/03 19:51:22 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/05 21:20:06 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		startupheader(void)
 	waterprint();
 }
 
-static void		shutdownender(void)
+static void		shutdown_ender(void)
 {
 	lu_putendl("              ╦╤╦╤╦╤╦            ╦╤╦╤╦╤╦              ");
 	lu_putendl("╦╤╦╤╦╤╦       ║─┼─┼─║            ║─┼─┼─║       ╦╤╦╤╦╤╦");
@@ -83,5 +83,5 @@ void			activate_launchers(t_unit **alst, int argc, char **argv)
 			(*alst) = (*alst)->next;
 		}
 	lu_lstdel(&begin);
-	shutdownender();
+	shutdown_ender();
 }

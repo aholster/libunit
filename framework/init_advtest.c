@@ -6,13 +6,13 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 14:21:04 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 20:13:36 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/05 21:15:26 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-void	init_advtest(t_unit **lst, char *name, enum e_retcode expected_result,
+void	init_advtest(t_unit **lst, char *name, t_retcode expected_result,
 	int (*f)(void))
 {
 	t_unit	*cur;

@@ -6,13 +6,13 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 14:44:53 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 16:32:53 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/05 21:15:26 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static int	putbasic(enum e_retcode code)
+static int	putbasic(t_retcode code)
 {
 	if (code == ok)
 	{
@@ -34,7 +34,7 @@ static int	putbasic(enum e_retcode code)
 	return (-1);
 }
 
-static int	expectcrash(enum e_retcode code, enum e_retcode expected)
+static int	expectcrash(t_retcode code, t_retcode expected)
 {
 	if (code == expected)
 	{
@@ -48,7 +48,7 @@ static int	expectcrash(enum e_retcode code, enum e_retcode expected)
 	return (-1);
 }
 
-static int	expecttimeout(enum e_retcode code, enum e_retcode expected)
+static int	expecttimeout(t_retcode code, t_retcode expected)
 {
 	if (code == expected)
 	{
@@ -62,7 +62,7 @@ static int	expecttimeout(enum e_retcode code, enum e_retcode expected)
 	return (-1);
 }
 
-int			putresult(enum e_retcode code, enum e_retcode expected)
+int			putresult(t_retcode code, t_retcode expected)
 {
 	if (expected == ok)
 		return (putbasic(code));

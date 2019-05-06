@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/05 18:23:11 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/06 15:51:57 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ FILEC = $(SOURCE:%=./%.c) $(BACKEND:%=./backend/%.c)\
 
 OBJ =	$(FILEC:%.c=%.o)
 
-HEAD = libunit.h
+HEAD = libunit.h ./test_functions/test_functions.h
 
 NAME = libunit.a
 

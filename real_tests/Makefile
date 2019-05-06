@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/22 14:50:59 by aholster       #+#    #+#                 #
-#    Updated: 2019/04/30 16:19:31 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/06 15:55:59 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ SOURCE := $(TESTS00:%=$(00LOC)%) $(TESTS01:%=$(01LOC)%) \
 
 FRAMEPATH := ./../framework/
 
+TEST_FUNCTIONS_PATH := ./../framework/test_functions
+
 FILEC = $(SOURCE:%=%.c)
 
 HEAD = header.h
@@ -60,7 +62,7 @@ $(NAME):
 	@make all -C $(FRAMEPATH)
 	@echo "\033[0;33mStarting assembly of $(NAME)…\033[0;00m"
 	@$(CC) $(FILEC) -o $(NAME) -I $(FRAMEPATH) -L $(FRAMEPATH) -lunit \
-	-I $(SOURCEPATH)
+	-I $(TEST_FUNCTIONS_PATH) -I $(SOURCEPATH)
 	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m\n"
 	@./$(NAME)
 

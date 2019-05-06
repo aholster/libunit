@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/25 16:33:39 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/05 21:29:52 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void			iterate(t_unit **cur, int *neg, unsigned int *total)
 {
-	enum e_retcode	holder;
+	t_retcode	holder;
 
 	holder = 0;
 	while ((*cur) != NULL)
@@ -25,7 +25,7 @@ static void			iterate(t_unit **cur, int *neg, unsigned int *total)
 			*neg = *neg + 1;
 		lu_putendl("\033[0;00m");
 		(*cur) = (*cur)->next;
-		(*total) += 1;
+		(*total)++;
 	}
 }
 
