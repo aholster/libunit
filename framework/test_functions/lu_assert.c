@@ -6,12 +6,13 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 17:38:44 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 20:31:47 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/08 21:02:45 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_functions.h"
 
+#include <stdio.h>
 static size_t	ft_judex(const char *start, const int fd)
 {
 	size_t	judex;
@@ -42,7 +43,7 @@ static void		lu_dispatcher(const char specifier, va_list ap, const int fd)
 			lu_digit(ap, fd);
 		else if (specifier == 's')
 			lu_str(ap, fd);
-		if (specifier == 'z')
+		else if (specifier == 'z')
 			lu_unsign(ap, fd);
 		else
 			ft_error("invalid specifier in dispatcher");
@@ -61,17 +62,19 @@ void			assert(int expression, const char *format, ...)
 	// fd to be decided, probably file?
 	index = 0;
 	va_start(ap, format);
-	if (expression == 1)
-		return ;
-	while (format[index] != '\0')
+	if (expression == 0)
 	{
-		if (format[index] == '%')
+		while (format[index] != '\0')
 		{
-			index++;
-			lu_dispatcher(format[index], ap, fd);
-			index++;
+			if (format[index] == '%')
+			{
+				index++;
+				lu_dispatcher(format[index], ap, fd);
+				index++;
+			}
+			else
+				index += ft_judex(&format[index], fd);
 		}
-		else
-			index += ft_judex(&format[index], fd);
+		exit(ko);
 	}
 }
