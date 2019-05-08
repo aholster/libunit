@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 17:47:26 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 20:22:05 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/08 20:30:59 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static unsigned int	lu_nbrlen(long long n, unsigned int base)
 	return (length);
 }
 
-void	lu_putnbr_fd(int n, int fd)
+void				lu_putnbr_fd(int n, int fd)
 {
 	char	buf[11];
 	size_t	curlen;

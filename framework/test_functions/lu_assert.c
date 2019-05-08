@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 17:38:44 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 20:28:14 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/08 20:31:47 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ static size_t	ft_judex(const char *start, const int fd)
 		judex++;
 	}
 	write(fd, start, judex);
-//	*index += judex;
 	return (judex);
 }
+
+/*
+**		else if (specifier == 'f')
+**			lu_float(ap, fd);
+*/
 
 static void		lu_dispatcher(const char specifier, va_list ap, const int fd)
 {
@@ -34,8 +38,6 @@ static void		lu_dispatcher(const char specifier, va_list ap, const int fd)
 			lu_char(ap, fd);
 		else if (specifier == 'd')
 			lu_digit(ap, fd);
-//		else if (specifier == 'f')
-//			lu_float(ap, fd);
 		else if (specifier == 'i')
 			lu_digit(ap, fd);
 		else if (specifier == 's')
