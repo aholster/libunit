@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 17:38:44 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 17:48:17 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/08 20:28:14 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,22 @@ static size_t	ft_judex(const char *start, const int fd)
 	return (judex);
 }
 
-static void		lu_dispatcher(t_wrtfunc *dispatch, const char specifier,\
-				va_list ap, const int fd)
+static void		lu_dispatcher(const char specifier, va_list ap, const int fd)
 {
 	if (specifier <= 'z' && specifier >= 'a')
 	{
-		if ((dispatch)[specifier - 'a'] != NULL)
-			((dispatch)[specifier - 'a'])(ap, fd);
+		if (specifier == 'c')
+			lu_char(ap, fd);
+		else if (specifier == 'd')
+			lu_digit(ap, fd);
+//		else if (specifier == 'f')
+//			lu_float(ap, fd);
+		else if (specifier == 'i')
+			lu_digit(ap, fd);
+		else if (specifier == 's')
+			lu_str(ap, fd);
+		if (specifier == 'z')
+			lu_unsign(ap, fd);
 		else
 			ft_error("invalid specifier in dispatcher");
 	}
@@ -40,16 +49,8 @@ static void		lu_dispatcher(t_wrtfunc *dispatch, const char specifier,\
 		ft_error("invalid specifier in dispatcher");
 }
 
-/*
-**	a	b	c	d	e	f	g	h	i	j	k	l	m	n	o	p	q	r	s	t	u	v	w	x	y	z
-**	N	N			N		N	N		N	N	N	N	N	N	N	N	N		N	N	N	N	N	N	
-*/
-
 void			assert(int expression, const char *format, ...)
 {
-	static const t_wrtfunc	dispatch[26] = {NULL, NULL, lu_char, lu_digit, NULL,\
-	NULL /*lu_float*/, NULL, NULL, lu_digit, NULL, NULL, NULL, NULL, NULL, NULL, NULL,\
-	NULL, NULL, lu_str, NULL, NULL, NULL, NULL, NULL, NULL, lu_unsign};
 	va_list	ap;
 	size_t	index;
 	int		fd;
@@ -65,7 +66,7 @@ void			assert(int expression, const char *format, ...)
 		if (format[index] == '%')
 		{
 			index++;
-			lu_dispatcher(dispatch, format[index], ap, fd);
+			lu_dispatcher(format[index], ap, fd);
 			index++;
 		}
 		else

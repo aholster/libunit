@@ -6,13 +6,30 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/12 18:18:57 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 18:49:02 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/08 20:21:40 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-void	lu_putnbr(int n)
+static unsigned int	lu_nbrlen(long long n, unsigned int base)
+{
+	unsigned int length;
+
+	length = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		length++;
+	while (n != 0)
+	{
+		n = n / base;
+		length++;
+	}
+	return (length);
+}
+
+void				lu_putnbr(int n)
 {
 	char	buf[11];
 	size_t	curlen;
@@ -22,7 +39,7 @@ void	lu_putnbr(int n)
 		write(1, "-2147483648", 11);
 	else
 	{
-		curlen = ft_nbrlen(n, 10) - 1;
+		curlen = lu_nbrlen(n, 10) - 1;
 		if (n < 0)
 		{
 			buf[0] = '-';
