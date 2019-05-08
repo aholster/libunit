@@ -6,34 +6,36 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/12 18:18:57 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/20 20:57:34 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/08 18:49:02 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static void	lu_putchar(char c)
+void	lu_putnbr(int n)
 {
-	write(1, &c, 1);
-}
+	char	buf[11];
+	size_t	curlen;
+	size_t	len;
 
-void		lu_putnbr(int n)
-{
 	if (n == -2147483648)
-	{
-		write(1, "-2", 2);
-		n = 147483648;
-	}
-	else if (n < 0)
-	{
-		write(1, "-", 1);
-		n = (-n);
-	}
-	if (n > 9)
-	{
-		lu_putnbr(n / 10);
-		lu_putchar((n % 10) + '0');
-	}
+		write(1, "-2147483648", 11);
 	else
-		lu_putchar(n + '0');
+	{
+		curlen = ft_nbrlen(n, 10) - 1;
+		if (n < 0)
+		{
+			buf[0] = '-';
+			n = (-n);
+		}
+		len = curlen;
+		while (n > 9)
+		{
+			buf[curlen] = (n % 10) + '0';
+			n /= 10;
+			curlen--;
+		}
+		buf[curlen] = (n + '0');
+		write(1, buf, len + 1);
+	}
 }
