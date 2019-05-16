@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 17:38:44 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 21:02:45 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/16 15:01:05 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ void			assert(int expression, const char *format, ...)
 			else
 				index += ft_judex(&format[index], fd);
 		}
-		exit(ko);
+		exit(-1);
 	}
 }
