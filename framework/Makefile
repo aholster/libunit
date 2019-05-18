@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/18 16:26:14 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/18 20:00:35 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ TESTFUNC := capture_fd reset_fd retrieve_text lu_assert lu_extractors\
 TESTFUNCPATH := ./test_functions/
 
 SOURCE := executioner init_test init_advtest start_test putresult\
-	loadlaunch activate_launchers launcherparser
+	loadlaunch activate_launchers launcherparser get_logfilefd
 
 FILEC = $(SOURCE:%=./%.c) $(BACKEND:%=./backend/%.c)\
 		$(TESTFUNC:%=$(TESTFUNCPATH)/%.c)

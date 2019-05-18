@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 17:38:44 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/18 16:42:35 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 20:00:35 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void			assert(int expression, const char *format, ...)
 	size_t	index;
 	int		fd;
 
-	fd = 2;
-	// fd to be decided, probably file?
+	fd = get_logfilefd();
 	index = 0;
 	va_start(ap, format);
 	if (expression == 0)

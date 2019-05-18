@@ -6,14 +6,16 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/18 17:32:42 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 20:20:48 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBUNIT_H
 # define LIBUNIT_H
 
-# define TIMEOUT 6
+# define TIMEOUT 1
+
+# define LOGFILE "LOG_FILE"
 
 # define TRUE 1
 # define FALSE 0
@@ -55,12 +57,14 @@ void				init_test(t_unit **lst, const char *name, t_test test_ptr);
 void				init_advtest(t_unit **lst, const char *name, \
 					t_retcode expected_result, t_test test_ptr);
 t_retcode			executioner(t_test test_ptr);
-int					start_test(t_unit **alst);
+void				start_test(t_unit **alst);
 
 void				loadlaunch(t_unit **alst, const char *block_name,\
 					t_test f);
 void				activate_launchers(t_unit **alst, int argc, char **argv);
 void				launcherparser(t_unit *lst, size_t argc, char **argv);
+
+int					get_logfilefd(void);
 
 void				*lu_memcpy(void *dst, const void *src, size_t n);
 void				*lu_memjoin(const void *mem1, size_t size1,\
