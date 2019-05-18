@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 18:11:47 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/06 21:37:04 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 16:39:56 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static void		waterprint(void)
 	lu_putstr("\033[0;34m~~~~~~~~~~~~~~~~~");
 	lu_putendl("\033[0;00m/∩================∩\\\033[0;34m~~~~~~~~~~~~~~~~~");
 	lu_putstr("\033[0;34m~~~~~~~~~~~~~~~~");
-	lu_putendl("\033[0;00m/∩==================∩\\\033[0;34m~~~~~~~~~~~~~~~~");
+	lu_putstr("\033[0;00m/∩==================∩\\\033[0;34m~~~~~~~~~~~~~~~~");
+	lu_putendl("\033[0;00m");
 }
 
 static void		startupheader(void)
@@ -75,7 +76,7 @@ void			activate_launchers(t_unit **alst, int argc, char **argv)
 	begin = *alst;
 	startupheader();
 	if (argc > 1)
-		launcherparser(alst, (size_t)argc - 1, &argv[1]);
+		launcherparser(*alst, (size_t)argc - 1, &argv[1]);
 	else
 		while ((*alst) != NULL)
 		{

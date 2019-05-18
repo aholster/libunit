@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lu_putstrstr_fd.c                                  :+:    :+:            */
+/*   lu_lstlen.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/02 17:45:56 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/18 16:36:53 by aholster      ########   odam.nl         */
+/*   Created: 2019/05/18 16:07:39 by aholster       #+#    #+#                */
+/*   Updated: 2019/05/18 16:37:05 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static size_t	subfinder(char const *format)
+size_t	lu_lstlen(t_unit const *lst)
 {
-	size_t	index;
+	size_t	len;
 
-	index = 0;
-	while (format[index] != '\0' && format[index] != '%')
+	len = 0;
+	if (lst == NULL)
+		return (len);
+	while (lst != NULL)
 	{
-		index++;
+		len++;
+		lst = lst->next;
 	}
-	return (index);
-}
-
-void			lu_putstrstr_fd(char const *format, char const *str, int fd)
-{
-	size_t	index;
-
-	index = subfinder(format);
-	if (format[index] == '%')
-	{
-		write(fd, format, index);
-		lu_putstr_fd(str, fd);
-		lu_putstr_fd(&format[index + 1], fd);
-	}
-	else
-	{
-		lu_putstr_fd(format, fd);
-	}
+	return (len);
 }

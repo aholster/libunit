@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lu_putstrstr_fd.c                                  :+:    :+:            */
+/*   lu_strcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/05/02 17:45:56 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/18 16:36:53 by aholster      ########   odam.nl         */
+/*   Created: 2019/05/18 16:25:23 by aholster       #+#    #+#                */
+/*   Updated: 2019/05/18 16:26:00 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static size_t	subfinder(char const *format)
+int	lu_strcmp(char const *s1, char const *s2)
 {
 	size_t	index;
 
 	index = 0;
-	while (format[index] != '\0' && format[index] != '%')
+	while (s1[index] == s2[index] && s2[index] != '\0' && s1[index] != '\0')
 	{
 		index++;
 	}
-	return (index);
-}
-
-void			lu_putstrstr_fd(char const *format, char const *str, int fd)
-{
-	size_t	index;
-
-	index = subfinder(format);
-	if (format[index] == '%')
-	{
-		write(fd, format, index);
-		lu_putstr_fd(str, fd);
-		lu_putstr_fd(&format[index + 1], fd);
-	}
-	else
-	{
-		lu_putstr_fd(format, fd);
-	}
+	return ((unsigned char)s1[index] - (unsigned char)s2[index]);
 }

@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/08 20:37:15 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/18 16:26:14 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ DATE := $(shell date)
 
 BACKEND := ft_error lu_putendl lu_putstr lu_putnbr lu_strlen lu_lstaddend\
  lu_lstdel lu_putstrstr lu_atoi lu_putstr_fd lu_putendl_fd lu_putstrstr_fd\
- lu_putnbr_fd lu_strdup lu_memjoin lu_memcpy
+ lu_putnbr_fd lu_strdup lu_memjoin lu_memcpy lu_lstlen lu_strcmp
 
 TESTFUNC := capture_fd reset_fd retrieve_text lu_assert lu_extractors\
  lu_longprint

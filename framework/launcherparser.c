@@ -6,56 +6,64 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/29 18:47:40 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/06 21:34:11 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 16:44:44 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static size_t	lstlen(t_unit **alst)
-{
-	t_unit	*temp;
-	size_t	len;
-
-	len = 0;
-	temp = *alst;
-	if (temp == NULL)
-		return (len);
-	while (temp != NULL)
-	{
-		len++;
-		temp = temp->next;
-	}
-	return (len);
-}
-
-void			launcherparser(t_unit **alst, size_t argc, char **argv)
+static void		initarr(t_unit *lst, char **nametable,\
+						int (**array)(void), size_t size)
 {
 	size_t	index;
-	int		(**array)(void);
-	int		num;
-	size_t	len;
 
 	index = 0;
-	len = lstlen(alst);
-	array = (int (**)(void))malloc(sizeof(int (*)(void)) * len);
-	if (array == NULL)
-		ft_error("malloc failed");
-	while (index < len)
+	while (index < size)
 	{
-		array[index] = (*alst)->test;
-		(*alst) = (*alst)->next;
+		nametable[index] = lst->name;
+		array[index] = lst->test;
+		lst = lst->next;
 		index++;
 	}
+}
+
+static void		arrparser(char const *argument, char const **nametable,\
+						int (**array)(void), size_t len)
+{
+	size_t	subdex;
+
+	subdex = 0;
+	while (subdex < len)
+	{
+		if (lu_strcmp(nametable[subdex], argument) == 0)
+		{
+			lu_putstrstr("\033[0;00m Now Testing:\033[0;34m %\033[0;00m\n\n",\
+						nametable[subdex]);
+			array[subdex]();
+		}
+		subdex++;
+	}
+}
+
+void			launcherparser(t_unit *lst, size_t argc, char **argv)
+{
+	int		(**array)(void);
+	char	**nametable;
+	size_t	len;
+	size_t	index;
+
+	len = lu_lstlen(lst);
+	array = (int (**)(void))malloc(sizeof(int (*)(void)) * len);
+	nametable = (char **)malloc(sizeof(char *) * len);
+	if (array == NULL || nametable == NULL)
+		ft_error("malloc failed");
+	initarr(lst, nametable, array, len);
 	index = 0;
 	while (index < argc)
 	{
-		num = lu_atoi(argv[index]);
-		if (num > 0 && (size_t)num <= len)
-		{
-			lu_putstrstr("\033[0;00m Now Testing:\033[0;34m %\033[0;00m\n\n", (*alst)->name);
-			(array[num - 1])();
-		}
+		arrparser(argv[index], (const char **)nametable, array, len);
 		index++;
 	}
+	free(array);
+	free(nametable);
 }

@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 20:04:15 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 16:40:58 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int					start_test(t_unit **lst);
 void				loadlaunch(t_unit **alst, const char *block_name,\
 					int (*f)(void));
 void				activate_launchers(t_unit **alst, int argc, char **argv);
-void				launcherparser(t_unit **alst, size_t argc, char **argv);
+void				launcherparser(t_unit *lst, size_t argc, char **argv);
 
 void				*lu_memcpy(void *dst, const void *src, size_t n);
 void				*lu_memjoin(const void *mem1, size_t size1,\
@@ -70,15 +70,18 @@ int					lu_atoi(const char *str);
 void				lu_putstr(char const *s);
 void				lu_putendl(char const *s);
 void				lu_putnbr(int n);
-void				lu_putstrstr(char *format, char *str);
+void				lu_putstrstr(char const *format, char const *str);
+int					lu_strcmp(char const *s1, char const *s2);
 
 void				lu_putstr_fd(char const *s, int fd);
 void				lu_putendl_fd(char const *s, int fd);
-void				lu_putstrstr_fd(char *format, char *str, int fd);
+void				lu_putstrstr_fd(char const *format, char const *str,\
+					int fd);
 void				lu_putnbr_fd(int n, int fd);
 
 size_t				lu_strlen(char const *s);
 void				lu_lstdel(t_unit **alst);
+size_t				lu_lstlen(t_unit const *alst);
 t_unit				*lu_lstaddend(t_unit **lst, t_unit *new);
 
 #endif

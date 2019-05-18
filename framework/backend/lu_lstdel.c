@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/22 17:40:24 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/20 18:39:52 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 16:05:02 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ void	lu_lstdel(t_unit **alst)
 	current = *alst;
 	while (current != NULL)
 	{
-		if (current->next != NULL)
-			holder = current->next;
-		else
-			holder = NULL;
+		holder = current->next;
+		free(current->name);
 		free(current);
 		current = holder;
 	}

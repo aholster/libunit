@@ -6,13 +6,12 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 17:38:44 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/16 15:01:05 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 16:42:35 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_functions.h"
 
-#include <stdio.h>
 static size_t	ft_judex(const char *start, const int fd)
 {
 	size_t	judex;
