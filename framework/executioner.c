@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 18:52:48 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/06 15:50:12 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 17:15:04 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static t_retcode	resolver(pid_t timer_pid, pid_t test_pid)
 	return (ret);
 }
 
-t_retcode			executioner(int (*test)(void))
+t_retcode			executioner(t_test test)
 {
 	pid_t	timer_pid;
 	pid_t	test_pid;

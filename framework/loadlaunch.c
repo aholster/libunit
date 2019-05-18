@@ -6,13 +6,13 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/25 18:03:30 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/06 21:27:53 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 17:19:33 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-void	loadlaunch(t_unit **alst, const char *block_name, int (*f)(void))
+void	loadlaunch(t_unit **alst, const char *block_name, t_test f)
 {
 	t_unit	*cur;
 

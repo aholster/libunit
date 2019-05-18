@@ -6,14 +6,14 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/29 18:47:40 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/18 16:44:44 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 17:18:39 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
 static void		initarr(t_unit *lst, char **nametable,\
-						int (**array)(void), size_t size)
+							t_test *array, size_t size)
 {
 	size_t	index;
 
@@ -28,7 +28,7 @@ static void		initarr(t_unit *lst, char **nametable,\
 }
 
 static void		arrparser(char const *argument, char const **nametable,\
-						int (**array)(void), size_t len)
+							t_test *array, size_t len)
 {
 	size_t	subdex;
 
@@ -47,13 +47,13 @@ static void		arrparser(char const *argument, char const **nametable,\
 
 void			launcherparser(t_unit *lst, size_t argc, char **argv)
 {
-	int		(**array)(void);
+	t_test	*array;
 	char	**nametable;
 	size_t	len;
 	size_t	index;
 
 	len = lu_lstlen(lst);
-	array = (int (**)(void))malloc(sizeof(int (*)(void)) * len);
+	array = (t_test *)malloc(sizeof(t_test) * len);
 	nametable = (char **)malloc(sizeof(char *) * len);
 	if (array == NULL || nametable == NULL)
 		ft_error("malloc failed");

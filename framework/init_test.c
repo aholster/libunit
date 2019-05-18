@@ -6,13 +6,13 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:43:00 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/06 21:27:50 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 17:19:07 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-void	init_test(t_unit **lst, const char *name, int (*test_ptr)(void))
+void	init_test(t_unit **lst, const char *name, t_test test_ptr)
 {
 	t_unit	*cur;
 
