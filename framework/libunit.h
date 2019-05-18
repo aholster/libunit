@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/18 17:22:39 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/18 17:32:42 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void				init_test(t_unit **lst, const char *name, t_test test_ptr);
 void				init_advtest(t_unit **lst, const char *name, \
 					t_retcode expected_result, t_test test_ptr);
 t_retcode			executioner(t_test test_ptr);
-int					start_test(t_unit **lst);
+int					start_test(t_unit **alst);
 
 void				loadlaunch(t_unit **alst, const char *block_name,\
 					t_test f);
