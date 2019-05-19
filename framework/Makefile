@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/18 20:00:35 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/19 19:58:06 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ HEAD = libunit.h ./test_functions/test_functions.h
 
 NAME = libunit.a
 
-SCRIPTS = ./scripts/protoextract
+SCRIPTS = ./scripts/protoextract ./scripts/maingen
 
 NORM = norminette $(FILEC) $(HEAD) | grep -e "Error"  -e "Warning" -B 1
 
