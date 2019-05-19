@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 17:34:37 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/19 18:39:25 by jesmith       ########   odam.nl         */
+/*   Updated: 2019/05/19 19:11:41 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	advanced_writing(void)
 	if (close(pipes[1]) == -1)
 		ft_error("failed to close pipe");
 
-	assert((status == status_check), "status |%d| does not status_check |%d|", status, status_check);
+	assert((status == status_check), "status |%d| did not match status_check |%d|", status, status_check);
 	while (input[index] != '\0')
 	{
 		assert((input[index] == output[index]),\
