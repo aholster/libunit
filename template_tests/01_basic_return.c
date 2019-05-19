@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 16:45:59 by aholster       #+#    #+#                */
-/*   Updated: 2019/04/30 16:53:22 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/19 18:43:39 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	basic_return(void)
 	void	expected;
 	void	output;
 
-	input = ;
-	expected = ;
+	input = "";
+	expected = "";
 	output = func(input);
-	if (output == expected)
-		return (0);
-	else
-		return (-1);
+
+	assert((output == expected),\
+	"output |%| did not match expected |%|", output, input);
+	return (0);
 }

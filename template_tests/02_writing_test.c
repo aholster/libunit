@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/30 16:54:19 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 15:19:51 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/19 18:38:56 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ int	basic_writing(void)
 {
 	char	*output;
 	char	*input;
+	size_t	index;
 	size_t	b_read;
 	t_fds	fd_data;
 
+	index = 0;
 	input = "one";
 
 	capture_fd(1, &fd_data);
@@ -27,9 +29,11 @@ int	basic_writing(void)
 	b_read = retrieve_text(&output, &fd_data);
 	reset_fd(&fd_data);
 	
-	dprintf(2, "strs: %s %s, amount read: %zu\n", output, input, b_read);
-	if (strcmp(input, output) == 0)
-		return (0);
-	else
-		return (-1);
+	while (input[index] != '\0')
+	{
+		assert((input[index] == output[index]),\
+		"input |%c| did not match output |%c| at index |%u|", input[index], output[index], index);
+		index++;
+	}
+	return (0);
 }

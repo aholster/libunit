@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 17:34:37 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/03 16:29:40 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/19 18:39:25 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ int	advanced_writing(void)
 	char	*output;
 	char	*check;
 	char	*input;
+	size_t	index;
 	size_t	readsize;
 	ssize_t	status;
+	ssize_t status_check;
 	int		pipes[2];
 
 	readsize = 14;
 	input = "one";
+	index = 0;
 
 	if (pipe(pipes) == -1)
 		ft_error("pipes failure");
@@ -47,10 +50,10 @@ int	advanced_writing(void)
 	check = (char *)malloc(sizeof(char) * readsize + 1);
 	if (check == NULL)
 		ft_error("malloc failed");
-	status = read(pipes[0], check, readsize);
-	if (status == -1)
+	status_check = read(pipes[0], check, readsize);
+	if (status_check == -1)
 		ft_error("read failure");
-	check[status] = '\0';
+	check[status_check] = '\0';
 
 
 	if (close(pipes[0]) == -1)
@@ -58,10 +61,12 @@ int	advanced_writing(void)
 	if (close(pipes[1]) == -1)
 		ft_error("failed to close pipe");
 
-
-	dprintf(2, "strs: %s %s, amount read: %zu\n", output, input, status);
-	if (strcmp(input, output) == 0)
-		return (0);
-	else
-		return (-1);
+	assert((status == status_check), "status |%d| does not status_check |%d|", status, status_check);
+	while (input[index] != '\0')
+	{
+		assert((input[index] == output[index]),\
+		"input |%c| did not match output |%c| at index |%u|", input[index], output[index], index);
+		index++;
+	}
+	return (0);
 }
