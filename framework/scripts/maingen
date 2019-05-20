@@ -21,4 +21,3 @@ done
 printf "\tactivate_launcher(&lst, argc, argv);\n" >> $1
 printf "\treturn (0); \n" >> $1
 printf "}\n" >> $1
-
