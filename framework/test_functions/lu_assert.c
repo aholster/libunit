@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 17:38:44 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/18 20:00:35 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/19 17:08:26 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void		lu_dispatcher(const char specifier, va_list ap, const int fd)
 			lu_digit(ap, fd);
 		else if (specifier == 's')
 			lu_str(ap, fd);
-		else if (specifier == 'z')
+		else if (specifier == 'u')
 			lu_unsign(ap, fd);
 		else
 			ft_error("invalid specifier in dispatcher");

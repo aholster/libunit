@@ -6,14 +6,14 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/18 20:20:48 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/20 18:52:16 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBUNIT_H
 # define LIBUNIT_H
 
-# define TIMEOUT 1
+# define TIMEOUT 5
 
 # define LOGFILE "LOG_FILE"
 
