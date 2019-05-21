@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/21 19:20:13 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/21 19:22:51 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ $(NAME):
 	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m\n"
 
 %.o: %.c
-	@$(GCCC) -o $@ $< -I ./ -I $(TESTFUNCPATH)
+	@$(GCCC) -o $@ $< -I ./
 
 clean:
 	@echo "\033[0;33mInitializing Summary Deletions...\033[0;00m"

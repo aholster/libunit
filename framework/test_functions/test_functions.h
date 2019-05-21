@@ -6,14 +6,14 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/05 15:31:56 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/21 18:26:24 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/21 19:20:24 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEST_FUNCTIONS_H
 # define TEST_FUNCTIONS_H
 
-# include "libunit.h"
+# include "./../libunit.h"
 
 # include <stdarg.h>
 # include <string.h>
