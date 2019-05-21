@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/08 17:53:46 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 20:29:10 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/21 19:30:34 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ void	lu_char(va_list ap, const int fd)
 	char	character;
 
 	character = (char)va_arg(ap, int);
-	write(fd, &character, 1);
+	if (character == '\0')
+		write(fd, "\\0", 2);
+	else if (character == '\n')
+		write(fd, "\\n", 2);
+	else
+		write(fd, &character, 1);
 }
 
 void	lu_digit(va_list ap, const int fd)
