@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/05 15:31:56 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 20:31:26 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/21 18:26:24 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@ void			lu_char(va_list ap, const int fd);
 void			lu_digit(va_list ap, const int fd);
 void			lu_str(va_list ap, const int fd);
 void			lu_unsign(va_list ap, const int fd);
+
+int				final_assert(void);
+void			softassert(int expression, const char *format, ...);
 
 #endif
