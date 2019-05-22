@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$#" -ne 1 ];then
+if [ "$#" -ne 0 ];then
 	echo "ERROR: WRONG NUMBER OF ARGUMENTS"
 	exit -1
 fi
@@ -9,15 +9,15 @@ IFS=$'\n'
 
 DIRECTS=$(find ./ -mindepth 1  -maxdepth 1 ! -name *.git* -type d)
 
-printf "#include \"header.h\"\n\n" > $1
-printf "int	main(int argc, char **argv)\n" >> $1
-printf "{\n" >> $1
-printf "	t_unit	*lst;\n\n" >> $1
+printf "#include \"header.h\"\n\n"
+printf "int	main(int argc, char **argv)\n"
+printf "{\n"
+printf "	t_unit	*lst;\n\n"
 for direct in $DIRECTS; do
 	PROTOS=$(find $direct -maxdepth 1 -name '00_*.c' -exec grep {} -e"^int.*(void)$" \;)
 	PROCESSED=$(echo $PROTOS | rev | cut -c7- | rev | sed -E 's/^int[[:space:]]*//')
-	printf "\tloadlaunch(&lst, \"$PROCESSED\", $PROCESSED);\n" >> $1
+	printf "\tloadlaunch(&lst, \"$PROCESSED\", $PROCESSED);\n"
 done
-printf "\tactivate_launcher(&lst, argc, argv);\n" >> $1
-printf "\treturn (0); \n" >> $1
-printf "}\n" >> $1
+printf "\tactivate_launchers(&lst, argc, argv);\n"
+printf "\treturn (0); \n"
+printf "}\n"

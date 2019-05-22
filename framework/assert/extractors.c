@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/08 17:53:46 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 13:30:12 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 16:47:20 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ void	lu_char(va_list ap, const int fd)
 		write(fd, &character, 1);
 }
 
-void	lu_digit(va_list ap, const int fd)
-{
-	long long	num;
-
-	num = va_arg(ap, long long);
-	signedll(num, fd);
-}
-
 void	lu_str(va_list ap, const int fd)
 {
 	char	*str;
@@ -44,10 +36,15 @@ void	lu_str(va_list ap, const int fd)
 		lu_putstr_fd(str, fd);
 }
 
-void	lu_unsign(va_list ap, const int fd)
+void	lu_mem(va_list ap, const int fd)
 {
-	unsigned long long num;
+	char	*mem;
+	size_t	size;
 
-	num = va_arg(ap, unsigned long long);
-	unsignedll(num, fd);
+	size = va_arg(ap, size_t);
+	mem = va_arg(ap, char *);
+	if (mem == NULL)
+		lu_putstr_fd("NULL", fd);
+	else
+		write(fd, mem, size);
 }

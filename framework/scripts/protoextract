@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$#" -ne 2 ];then
+if [ "$#" -ne 1 ];then
 	echo "ERROR: WRONG NUMBER OF ARGUMENTS"
 	exit -1
 fi
@@ -11,12 +11,12 @@ DIRECTS=$(find ./ -mindepth 1  -maxdepth 1 ! -name *.git* -type d)
 
 HEADER=$(sed '/^# pragma mark prototypes$/q' ./$1)
 
-printf "$HEADER\n" > $2
+printf "$HEADER\n"
 for direct in $DIRECTS; do
 	PROTOS=$(find $direct -maxdepth 1 -name '[0-9][0-9]_*.c' -exec grep {} -e"^int.*(void)$" \;)
-	echo "" >> $2
+	echo ""
 	for proto in $PROTOS; do
-		echo "$proto;" >> $2
+		echo "$proto;"
 	done
 done
-printf "\n#endif\n" >> $2
+printf "\n#endif\n"

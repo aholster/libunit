@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 13:11:26 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 15:48:52 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void				lu_putendl(char const *s);
 void				lu_putnbr(int n);
 void				lu_putstrstr(char const *format, char const *str);
 int					lu_strcmp(char const *s1, char const *s2);
+int					lu_strncmp(char const *s1, char const *s2, size_t n);
+int					lu_strnequ(char const *s1, char const *s2, size_t n);
 
 void				lu_putstr_fd(char const *s, int fd);
 void				lu_putendl_fd(char const *s, int fd);
