@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/22 13:15:33 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 16:29:21 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 16:53:31 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void		dispatcher(const char *specifier, va_list ap, const int fd)
 			lu_str(ap, fd);
 		else if (*specifier == 'm')
 			lu_mem(ap, fd);
-		else if (*specifier == 'd' && *specifier == 'i')
+		else if (*specifier == 'd' || *specifier == 'i')
 			lu_digit(ap, fd);
 		else if (*specifier == 'u')
 			lu_unsign(ap, fd);
