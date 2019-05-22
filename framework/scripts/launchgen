@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$#" -ne 1 ];then
+if [ "$#" -ne 2 ];then
 	echo "ERROR: WRONG NUMBER OF ARGUMENTS"
 	exit -1
 fi
@@ -8,12 +8,12 @@ fi
 IFS=$'\n'
 
 HEADER=$(sed '/^[[:space:]]*t_unit[[:space:]]*\*lst;$/q' ./$1)
-printf "$HEADER\n\n"
+printf "$HEADER\n\n" > $2
 PROTOS=$(find ./ -maxdepth 1 ! -name '00_*.c' -name '[0-9][0-9]_*.c' -exec grep {} -e"^int.*(void)$" \;)
 for proto in $PROTOS; do
 	PROCESSED=$(echo "$proto" | rev | cut -c7- | rev | sed -E 's/^int[[:space:]]*//')
-	printf "\tinit_test(&lst, \"$PROCESSED\", $PROCESSED);\n"
+	printf "\tinit_test(&lst, \"$PROCESSED\", $PROCESSED);\n" >> $2
 done
-printf "\tstart_test(&lst);\n"
-printf "\treturn (0); \n"
-printf "}\n"
+printf "\tstart_test(&lst);\n" >> $2
+printf "\treturn (0); \n" >> $2
+printf "}\n" >> $2
