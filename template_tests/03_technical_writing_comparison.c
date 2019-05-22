@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   03_writing_comparison.c                            :+:    :+:            */
+/*   06_technical_writing_comparison.c                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/02 17:34:37 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/19 19:11:41 by jesmith       ########   odam.nl         */
+/*   Updated: 2019/05/22 20:12:02 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-#include <stdio.h>
-int	advanced_writing(void)
+int	technical_writing_comparison(void)
 {
 	char	*output;
 	char	*check;
@@ -34,6 +33,8 @@ int	advanced_writing(void)
 		ft_error("failed to close stdin");
 	if (dup2(pipes[1], 1) == -1)
 		ft_error("failed to reroute fd");
+	if (fcntl(pipes[0], F_SETFL, O_NONBLOCK) == -1)
+		ft_error("failed to fcntl pipe");
 	
 	lu_putstr(input);
 

@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/03 16:28:59 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/19 18:34:26 by jesmith       ########   odam.nl         */
+/*   Updated: 2019/05/22 20:26:03 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,23 @@ int	advanced_clean_writing(void)
 
 	index = 0;
 	input = "";
-	capture_fd(1, &fd_data);	
+	capture_fd(1, &fd_data);
+
 	printf("");
+
 	b_read = retrieve_text(&ret, &fd_data);
+
 	printf("");
+
 	b_read_test = retrieve_text(&ret_test, &fd_data);
 	reset_fd(&fd_data);
-	
-	assert((b_read == b_read_test), "b_read printf |%d| does not match |%d|", b_read, b_read_test);
+	assert((b_read == b_read_test), "b_read printf |%d| does not match |%d|",\
+		b_read, b_read_test);
 	while (ret[index] != '\0')
 	{
 		assert((ret[index] == ret_test[index]),\
-		"printf |%c| did not match ft_printf |%c| at index |%u|", ret[index], ret_test[index], index);
+			"printf |%c| did not match ft_printf |%c| at index |%u|",\
+			ret[index], ret_test[index], index);
 		index++;
 	}
-}
-
-int	main(void)
-{
-	printf("starting test\n");
-	printf("return: %d \n", advanced_clean_writing());
-	return (0);
 }
