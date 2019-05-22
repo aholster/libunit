@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/22 13:10:52 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 16:47:07 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 21:38:20 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ typedef enum	e_assertcode
 {
 	retrieve = 42,
 	testfail = -1,
-	testsuccess = 0,
-	reset = -42
+	testsuccess = 0
 }				t_assertcode;
 
 void			assert(int expression, const char *format, ...);
 void			softassert(int expression, const char *format, ...);
+int				assert_status(t_assertcode code);
 
 void			assert_format(va_list ap, const char *format, const int fd);
 
@@ -49,7 +49,5 @@ void			lu_unsign_ll(va_list ap, const int fd);
 void			lu_unsign_l(va_list ap, const int fd);
 void			lu_unsign_h(va_list ap, const int fd);
 void			lu_unsign_hh(va_list ap, const int fd);
-
-int				final_assert(void);
 
 #endif

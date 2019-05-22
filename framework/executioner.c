@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 18:52:48 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/18 17:15:04 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 21:44:53 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ t_retcode			executioner(t_test test)
 {
 	pid_t	timer_pid;
 	pid_t	test_pid;
+	int		holder;
 
 	timer_pid = fork();
 	if (timer_pid < 0)
@@ -86,7 +87,12 @@ t_retcode			executioner(t_test test)
 	if (test_pid < 0)
 		ft_error("fork failure");
 	if (test_pid == 0)
-		exit(test());
+	{
+		holder = test();
+		if (assert_status(retrieve) == -1)
+			exit(-1);
+		exit(holder);
+	}
 	else
 	{
 		return (resolver(timer_pid, test_pid));
