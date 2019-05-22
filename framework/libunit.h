@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 15:48:52 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 18:16:42 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ void				*lu_memjoin(const void *mem1, size_t size1,\
 char				*lu_strdup(char const *s1);
 int					lu_atoi(const char *str);
 void				lu_putstr(char const *s);
+void				lu_putcaret_fd(int c, const int fd);
+void				lu_putcaret(int c);
+void				lu_putchar_fd(char c, const int fd);
+void				lu_putchar(char c);
 void				lu_putendl(char const *s);
 void				lu_putnbr(int n);
 void				lu_putstrstr(char const *format, char const *str);

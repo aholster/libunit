@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/08 17:53:46 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 16:47:20 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 18:14:39 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,10 @@
 
 void	lu_char(va_list ap, const int fd)
 {
-	char	character;
+	int	character;
 
-	character = (char)va_arg(ap, int);
-	if (character == '\0')
-		write(fd, "\\0", 2);
-	else if (character == '\n')
-		write(fd, "\\n", 2);
-	else
-		write(fd, &character, 1);
+	character = (int)va_arg(ap, int);
+	lu_putcaret_fd(character, fd);
 }
 
 void	lu_str(va_list ap, const int fd)
