@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/22 14:57:08 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 16:45:02 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 16:51:35 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	lu_unsign(va_list ap, const int fd)
 
 	num = va_arg(ap, int);
 	unsignedll(num, fd);
-	dprintf(fd, "%u");
+	dprintf(fd, "%u", num);
 }
 
 void	lu_unsign_ll(va_list ap, const int fd)
@@ -26,7 +26,7 @@ void	lu_unsign_ll(va_list ap, const int fd)
 	unsigned long long num;
 
 	num = va_arg(ap, unsigned long long);
-	dprintf(fd, "%llu");
+	dprintf(fd, "%llu", num);
 }
 
 void	lu_unsign_l(va_list ap, const int fd)
@@ -34,21 +34,21 @@ void	lu_unsign_l(va_list ap, const int fd)
 	unsigned long 		num;
 
 	num = va_arg(ap, unsigned long);
-	dprintf(fd, "%lu");
+	dprintf(fd, "%lu", num);
 }
 
 void	lu_unsign_h(va_list ap, const int fd)
 {
 	unsigned short 		num;
 
-	num = va_arg(ap, unsigned short);
-	dprintf(fd, "%hu");
+	num = (unsigned short)va_arg(ap, int);
+	dprintf(fd, "%hu", num);
 }
 
 void	lu_unsign_hh(va_list ap, const int fd)
 {
 	unsigned char 		num;
 
-	num = va_arg(ap, unsigned char);
-	dprintf(fd, "%hhu");
+	num = (unsigned char)va_arg(ap, int);
+	dprintf(fd, "%hhu", num);
 }
