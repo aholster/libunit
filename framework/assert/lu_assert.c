@@ -6,13 +6,13 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/06 17:38:44 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 13:28:28 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 13:46:26 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lu_assert.h"
 
-void			assert(int expression, const char *format, ...)
+void				assert(int expression, const char *format, ...)
 {
 	va_list	ap;
 	size_t	index;
@@ -28,25 +28,27 @@ void			assert(int expression, const char *format, ...)
 	}
 }
 
-static int		assertstatus(int	reference)
+static t_assertcode	assertstatus(t_assertcode code)
 {
-	static int	status = 0;
+	static t_assertcode	status = 0;
 
-	if (reference != unexpect)
-		status = reference;
+	if (code != reset)
+		status = testsuccess;
 	return (status);
 }
 
-int				final_assert(void)
+int					final_assert(void)
 {
-	int	holder;
+	t_assertcode	holder;
 
-	holder = assertstatus(unexpect);
-	assertstatus(0);
-	return(holder);
+	holder = assertstatus(retrieve);
+	assertstatus(reset);
+	if (holder == testsuccess)
+		return (0);
+	return (-1);
 }
 
-void			softassert(int expression, const char *format, ...)
+void				softassert(int expression, const char *format, ...)
 {
 	va_list	ap;
 	int		fd;
@@ -56,7 +58,6 @@ void			softassert(int expression, const char *format, ...)
 	if (expression == 0)
 	{
 		assert_format(ap, format, fd);
-		assertstatus(-1);
+		assertstatus(testfail);
 	}
 }
-

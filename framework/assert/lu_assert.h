@@ -6,17 +6,24 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/22 13:10:52 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 13:28:23 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 13:46:11 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef LU_ASSERT_H
 # define LU_ASSERT_H
 
-#include "./../libunit.h"
+# include "./../libunit.h"
 
 # include <stdarg.h>
+
+typedef enum	e_assertcode
+{
+	retrieve = 42,
+	testfail = -1,
+	testsuccess = 0,
+	reset = -42
+}				t_assertcode;
 
 void			assert(int expression, const char *format, ...);
 void			softassert(int expression, const char *format, ...);
