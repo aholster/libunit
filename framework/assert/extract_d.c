@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/22 14:57:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 16:50:31 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 17:32:16 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	lu_digit_ll(va_list ap, const int fd)
 
 void	lu_digit_l(va_list ap, const int fd)
 {
-	long 		num;
+	long		num;
 
 	num = va_arg(ap, long);
 	dprintf(fd, "%ld", num);

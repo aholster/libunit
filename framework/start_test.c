@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/18 20:17:18 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 17:30:59 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,10 @@ void				start_test(t_unit **alst)
 	while (current != NULL)
 	{
 		lu_putstrstr("	\033[0;36m%\033[0;00m > ", current->name);
-		lu_putstrstr_fd("	% > ", current->name, get_logfilefd());
+		lu_putstrstr_fd("\n	% > ", current->name, get_logfilefd());
 		if (putresult(executioner(current->test), current->expectation) == -1)
 			failed_tests++;
 		lu_putendl("\033[0;00m");
-		lu_putendl_fd("", get_logfilefd());
 		current = current->next;
 	}
 	putfailcount(failed_tests, total);
