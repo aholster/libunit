@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/21 19:22:51 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/22 13:30:01 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ BACKEND := ft_error lu_putendl lu_putstr lu_putnbr lu_strlen lu_lstaddend\
  lu_lstdel lu_putstrstr lu_atoi lu_putstr_fd lu_putendl_fd lu_putstrstr_fd\
  lu_putnbr_fd lu_strdup lu_memjoin lu_memcpy lu_lstlen lu_strcmp
 
-TESTFUNC := capture_fd reset_fd retrieve_text lu_assert lu_extractors\
- lu_longprint
+ASSERT := lu_assert extractors lu_longprint assert_format
+
+TESTFUNC := capture_fd reset_fd retrieve_text
 
 TESTFUNCPATH := ./test_functions/
 
@@ -25,11 +26,11 @@ SOURCE := executioner init_test init_advtest start_test putresult\
 	loadlaunch activate_launchers launcherparser get_logfilefd
 
 FILEC = $(SOURCE:%=./%.c) $(BACKEND:%=./backend/%.c)\
-		$(TESTFUNC:%=$(TESTFUNCPATH)/%.c)
+		$(TESTFUNC:%=$(TESTFUNCPATH)/%.c) $(ASSERT:%=./assert/%.c)
 
 OBJ =	$(FILEC:%.c=%.o)
 
-HEAD = libunit.h ./test_functions/test_functions.h
+HEAD = libunit.h ./test_functions/test_functions.h ./assert/lu_assert.h
 
 NAME = libunit.a
 

@@ -6,11 +6,11 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/08 20:00:03 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/08 20:43:09 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/22 13:11:55 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_functions.h"
+#include "lu_assert.h"
 
 static unsigned short	longlen(long long n)
 {
