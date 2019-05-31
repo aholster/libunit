@@ -6,21 +6,11 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/30 18:26:10 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/31 19:49:52 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
-
-static void			putfailcount(const unsigned int failed_tests,\
-								const unsigned int total)
-{
-	lu_putstr("\n		(");
-	lu_putnbr(total - failed_tests);
-	lu_putstr("/");
-	lu_putnbr(total);
-	lu_putstr(") Tests passed\n\n");
-}
 
 static int			find_longest_name(const t_unit *lst)
 {
@@ -38,6 +28,17 @@ static int			find_longest_name(const t_unit *lst)
 	return (namelen);
 }
 
+static int			result_handler(t_unit *current, const int fd)
+{
+	t_retcode	holder;
+
+	holder = executioner(current->test);
+	logresult(holder, current->expectation, fd);
+	if (putresult(holder, current->expectation) == -1)
+		return (-1);
+	return (1);
+}
+
 void				start_test(t_unit **alst)
 {
 	t_unit			*current;
@@ -52,14 +53,12 @@ void				start_test(t_unit **alst)
 	while (current != NULL)
 	{
 		dprintf(1, "\t\033[0;36m%-*s\033[0;00m > ", padding, current->name);
-//		lu_putstrstr("\t\033[0;36m%\033[0;00m > ", current->name);
-		dprintf(get_logfilefd(), "\t%-*s > ", padding, current->name);
-//		lu_putstrstr_fd("\n	% > ", current->name, get_logfilefd());
-		if (putresult(executioner(current->test), current->expectation) == -1)
+		dprintf(get_logfilefd(), "\n\t%-*s > ", padding, current->name);
+		if (result_handler(current, get_logfilefd()) == -1)
 			failed_tests++;
-		lu_putendl("\033[0;00m");
+		lu_putendl("");
 		current = current->next;
 	}
-	putfailcount(failed_tests, total);
+	dprintf(1, "\n\t\t(%u/%u) Tests passed\n\n", total - failed_tests, total);
 	lu_lstdel(alst);
 }

@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 15:51:10 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 18:16:42 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/31 19:50:08 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef	struct		s_unit
 
 void				ft_error(char *error);
 int					putresult(t_retcode code, t_retcode expected);
+int					logresult(t_retcode code, t_retcode expected, const int fd);
 void				init_test(t_unit **lst, const char *name, t_test test_ptr);
 void				init_advtest(t_unit **lst, const char *name, \
 					t_retcode expected_result, t_test test_ptr);

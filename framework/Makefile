@@ -6,7 +6,7 @@
 #    By: aholster <aholster@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/20 15:50:06 by aholster       #+#    #+#                 #
-#    Updated: 2019/05/22 18:16:54 by aholster      ########   odam.nl          #
+#    Updated: 2019/05/31 19:49:35 by aholster      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,15 @@ BACKEND := ft_error lu_putendl lu_putstr lu_putnbr lu_strlen lu_lstaddend\
  lu_putnbr_fd lu_strdup lu_memjoin lu_memcpy lu_lstlen lu_strcmp lu_strncmp\
  lu_strnequ lu_putcaret lu_putcaret_fd lu_putchar lu_putchar_fd
 
-ASSERT := lu_assert extractors lu_longprint assert_format extract_d extract_u
+ASSERT := lu_assert assert_format 
+#extractors lu_longprint extract_d extract_u
 
 TESTFUNC := capture_fd reset_fd retrieve_text
 
 TESTFUNCPATH := ./test_functions/
 
-SOURCE := executioner init_test init_advtest start_test putresult\
-	loadlaunch activate_launchers launcherparser get_logfilefd
+SOURCE := executioner init_test init_advtest start_test loadlaunch\
+ activate_launchers launcherparser get_logfilefd putresult logresult
 
 FILEC = $(SOURCE:%=./%.c) $(BACKEND:%=./backend/%.c)\
 		$(TESTFUNC:%=$(TESTFUNCPATH)/%.c) $(ASSERT:%=./assert/%.c)
