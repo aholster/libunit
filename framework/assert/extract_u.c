@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/05/22 14:57:08 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/22 17:32:41 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/31 17:22:48 by jesmith       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	lu_unsign(va_list ap, const int fd)
 	int					num;
 
 	num = va_arg(ap, int);
-	unsignedll(num, fd);
 	dprintf(fd, "%u", num);
 }
 
