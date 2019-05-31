@@ -6,7 +6,7 @@
 /*   By: aholster <aholster@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/04/20 17:51:51 by aholster       #+#    #+#                */
-/*   Updated: 2019/05/31 19:49:52 by aholster      ########   odam.nl         */
+/*   Updated: 2019/05/31 19:54:56 by aholster      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void				start_test(t_unit **alst)
 	while (current != NULL)
 	{
 		dprintf(1, "\t\033[0;36m%-*s\033[0;00m > ", padding, current->name);
-		dprintf(get_logfilefd(), "\n\t%-*s > ", padding, current->name);
+		dprintf(get_logfilefd(), "\n\n\t%-*s > ", padding, current->name);
 		if (result_handler(current, get_logfilefd()) == -1)
 			failed_tests++;
 		lu_putendl("");
